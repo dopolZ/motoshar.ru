@@ -1,0 +1,41 @@
+.engines {   
+   align-items: center;
+   display: flex;
+   flex-flow: wrap;
+   justify-content: center;
+   height: 100%;
+   width: 20%;
+}
+
+.button {
+   background: rgba(250, 250, 250);
+   color: inherit;
+   text-decoration: none;
+   width: 70%;
+}
+
+@media (hover) {
+   .button:hover {
+      font-weight: bold;
+      transform: scale(1.05);
+   }
+}
+
+.active {
+   composes: button;
+   background: var(--mainBgColor);
+   font-weight: bold;
+}
+
+@media (orientation: portrait) {
+   .engines {
+      justify-content: space-between;
+      height: min-content;
+      margin: 5vw 0 0;
+      width: 100%;
+   }
+
+   .engines > div:nth-child(n+4) {
+      width: 49%;
+   }
+}

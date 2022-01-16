@@ -1,0 +1,117 @@
+.filterBlockFilter {
+   align-items: center;
+   background: rgb(250, 250, 250);
+   border-radius: 3px;
+   box-shadow: 0 0 0 1px rgb(240, 240, 240);
+   display: flex;
+   justify-content: space-evenly;
+   margin: 1vw 0 0 2.5vw;
+   width: 89%;
+}
+
+.filterBlockFilter > div {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   width: 100%;
+}
+
+.filterBlockFilter > div > select {
+   border: 1px solid lightgray;
+   border-radius: 3px;
+   color: inherit;
+   margin: .5vw;
+   width: 30%;
+}
+
+.filterBlockFilter > div > input {
+   border: 1px solid lightgray;
+   border-radius: 3px;
+   color: inherit;
+   height: 1.5vw;
+   margin: .5vw .5vw .5vw 1.5vw;
+   width: 1.5vw;
+}
+
+.reset {
+   background: white;
+   border-radius: 2px;
+   cursor: pointer;
+   height: 2.1vw;
+   line-height: 2.1vw;
+   margin: 0 0.5vw 0 0;
+   outline: 1px solid rgb(240 240 240);
+   text-align: center;
+   width: 16vw;
+}
+
+@media (hover: hover) {
+   .reset:hover {
+      outline: 1px solid lightgrey;
+   }
+}
+
+.reset:active {
+   font-weight: bold;
+   outline: 1px solid;
+}
+
+@media (orientation: portrait) {
+   .filterBlockFilter {
+      box-shadow: none;
+      flex-flow: wrap;
+      margin: 0;
+      padding: 3vw 0;
+      width: 100%;
+   }
+
+   .filterBlockFilter > div {
+      width: 50%;
+   }
+
+   .filterBlockFilter > div:nth-child(1) {
+      width: 47%;
+   }
+
+   .filterBlockFilter > div:nth-child(1) select {
+      width: 25%;
+   }
+
+   .filterBlockFilter > div:nth-child(2) {
+      width: 53%;
+   }
+
+   .filterBlockFilter > div:nth-child(2) select {
+      width: 35%;
+   }
+
+   .filterBlockFilter > div:nth-child(3) {
+      margin: 5vw 0 0;
+      width: 100%;
+   }
+
+   .filterBlockFilter > div:nth-child(3) select {
+      margin: 0 2vw;
+   }
+
+   .filterBlockFilter > div:nth-child(4) {
+      margin: 5vw 0 0;
+      width: 75%;
+   }
+
+   .filterBlockFilter > div:nth-child(4) span:first-of-type {
+      order: -1;
+   }
+
+   .filterBlockFilter > div > input {
+      height: 7vw;
+      margin: 0 6vw;
+      width: 7vw;
+   }
+
+   .reset {
+      height: 9vw;
+      line-height: 8.5vw;
+      margin: 0 0 -5vw;
+   }
+}

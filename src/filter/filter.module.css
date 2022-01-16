@@ -1,0 +1,37 @@
+.filter {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+.h1h2 h1 {
+   font: bold 2.5vw 'main';
+   margin: 3vw 0 0;
+   text-align: center;
+   text-transform: uppercase;
+   width: 100%;
+}
+
+.h1h2 h2 {
+   font: 1.5vw 'main';
+   letter-spacing: 3px;
+   margin: 0 0 3vw;
+   text-align: center;
+   text-transform: lowercase;
+   width: 100%;
+}
+
+@media (orientation: portrait) {
+   .h1h2 {
+      margin: 3vw 0 0;
+   }
+
+   .h1h2 h1 {
+      font: bold 6vw 'main';
+   }
+   
+   .h1h2 h2 {
+      font: 5vw 'main';
+      letter-spacing: .07vw;
+   }
+}

@@ -1,0 +1,100 @@
+.close {
+   height: 3vw;
+   position: absolute;
+   right: 1vw;
+   top: 1vw;
+   width: 3vw;
+   z-index: 25;
+}
+
+.callback {
+   composes: close;
+}
+
+.calc {
+   composes: close;
+}
+
+.lot {
+   composes: close;
+   background: url(../img/goback.png) no-repeat center/cover;
+   position: fixed;
+   right: 1.5vw;
+   top: 7vw;
+   transition: transform .2s, filter .2s;
+   transform: scale(.9);
+}
+
+.lot span {
+   display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+   .close:hover span {
+      background: red;
+   }
+
+   .close:hover .span1 {
+      transform: translateY(1.5vw) rotate(135deg);
+   }
+
+   .close:hover .span2 {
+      transform: translateY(1.5vw) rotate(-135deg);
+   }
+
+   .lot {
+      filter: contrast(.5);
+   }
+
+   .lot:hover {
+      filter: contrast(1);
+      transform: scale(1.1);
+   }
+}
+
+.span {
+   background: darkslategray;
+   height: 1px;
+   position: absolute;
+   transition: transform 1s;
+   width: 100%;   
+}
+
+.span1 {
+   composes: span;
+   transform: translateY(1.5vw) rotate(45deg);
+}
+
+.span2 {
+   composes: span;
+   transform: translateY(1.5vw) rotate(-45deg);
+}
+
+@media (orientation: portrait) {
+   .close {      
+      height: 10vw;
+      width: 10vw;
+   }
+
+   .calc {
+      right: 4.5vw;
+      top: 4vw;      
+   }
+
+   .callback {
+      right: 2vw;
+      top: 2vw;
+   }
+
+   .span1, .span2 {
+      top: 3.3vw;
+   }
+
+   .lot {
+      background: center 110% /contain url(../img/gobackGrey.png) rgba(255, 255, 255, .7);
+      border-radius: 20%;
+      right: 4.5vw;
+      top: 25vw;
+      z-index: 1;
+   }
+}

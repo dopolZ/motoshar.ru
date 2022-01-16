@@ -1,0 +1,30 @@
+#findLotNum {
+   align-items: center;
+   display: flex;
+   justify-content: flex-end;
+   padding: 0 0 1vw 0;
+   width: 91.5%;
+}
+
+#findLotNum input[type='tel'] {
+   margin: 0 .3vw 0 1vw;
+   text-align: center;
+   width: 6vw;
+}
+
+@media (orientation: portrait) {
+   #findLotNum {
+      justify-content: center;
+      padding: 2vw 0 0;
+      width: 100%;
+   }
+
+   #findLotNum input[type='tel'] {
+      margin: 0 3vw 0;
+      width: 20vw;
+   }
+
+   #findLotNum input[type='submit'] {
+      width: 20vw;
+   }
+}

@@ -1,0 +1,405 @@
+#h1AndH2BeginCalc {
+   display: flex;
+   flex-flow: wrap;
+   justify-content: center;
+   margin: 1vw 0 2.5vw;
+}
+
+#h1AndH2BeginCalc h1 {
+   font: bold 2.5vw 'main';
+   text-transform: uppercase;
+}
+
+#h1AndH2BeginCalc h2 {
+   font: 1.5vw 'main';
+   letter-spacing: 3px;
+}
+
+#inputBlockCalc {
+   align-items: center;
+   display: flex;
+   justify-content: space-evenly;
+   width: 100%;
+}
+
+#inputBlockCalc > div:first-child {
+   border: none;
+   display: flex;
+   justify-content: center;
+   margin: 0 0 0 -5vw;
+}
+
+#inputBlockCalc > div:first-child > div {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+#inputBlockCalc > div:first-child > div > input {
+   height: 1.5vw;
+   margin: 0;
+   width: 20%;
+}
+
+#inputBlockCalc > div:first-child > div > span {
+   line-height: 2.2vw;
+   text-align: right;
+   width: 60%;
+}
+
+#inputBlockCalc > div {
+   border-top: 1px solid lightgray;
+   border-radius: 7px;
+   display: flex;
+   flex-basis: 20%;
+   flex-flow: wrap;
+}
+
+#inputBlockCalc > div > span {
+   padding: 0 0 0 1vw;
+}
+
+#inputBlockCalc > div > div {
+   width: 100%;
+}
+
+#inputBlockCalc > div > select {
+   padding: 0 0 0 30%;
+   width: 100%;
+}
+
+#inputBlockCalc > div > input {
+   text-align: center;
+   width: 100%;
+}
+
+#coursesAndBigPowerBlockCalc {
+   align-items: center;
+   display: flex;
+   justify-content: space-evenly;
+   margin: 1vw 0 0;
+   width: 100%;
+}
+
+#coursesAndBigPowerBlockCalc > div {
+   align-items: center;
+   display: flex;
+   flex-basis: 20%;
+   justify-content: space-around;
+   height: 2.5vw;
+}
+
+#coursesAndBigPowerBlockCalc > div:first-child {
+   display: flex;
+   justify-content: center;
+   margin: 0 0 0 -5vw;
+}
+
+#coursesAndBigPowerBlockCalc > div:first-child > input {
+   height: 1.5vw;
+   margin: 0;
+   width: 20%;
+}
+
+#coursesAndBigPowerBlockCalc > div:first-child > span {
+   line-height: 2.2vw;
+   text-align: right;
+   width: 60%;
+}
+
+#coursesAndBigPowerBlockCalc > div > input {
+   text-align: center;
+   width: 100%;
+}
+
+#kyushuFreightBlockCalc {
+   align-items: center;
+   display: flex;
+   justify-content: space-evenly;
+   margin: .5vw 0 0;
+   width: 100%;
+}
+
+#kyushuFreightBlockCalc > div {
+   align-items: center;
+   display: flex;
+   flex-basis: 20%;
+   justify-content: space-around;
+   height: 2.5vw;
+}
+
+#kyushuFreightBlockCalc > div:first-child {
+   display: flex;
+   justify-content: center;
+   margin: 0 0 0 -5vw;
+}
+
+#kyushuFreightBlockCalc > div:first-child > input {
+   height: 1.5vw;
+   margin: 0;
+   width: 20%;
+}
+
+#kyushuFreightBlockCalc > div:first-child > span {
+   line-height: 2.2vw;
+   text-align: right;
+   width: 60%;
+}
+
+#kyushuFreightBlockCalc > div > input {
+   text-align: center;
+   width: 100%;
+}
+
+#resultBlockCalc {
+   align-items: center;
+   display: flex;
+   flex-flow: wrap;
+   justify-content: space-evenly;
+   margin: 1.5vw 0 0;
+   width: 100%;
+}
+
+.descriptionBlockCalc {
+   display: flex;
+   flex-flow: column;
+   width: 38%;
+}
+
+.descriptionBlockCalc > div {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.descriptionBlockDiv > div {
+   align-items: center;
+   display: flex;
+}
+
+.descriptionBlockDiv > div:last-child {
+   overflow: hidden;
+   width: 6vw;
+}
+
+.descriptionBlockDiv input {
+   height: 1.5vw;
+   width: 1.5vw;
+}
+
+#inputFreight {
+   margin: 0 2vw 0 0;
+}
+
+#inputCustom {
+   margin: 0 .6vw 0 0;
+}
+
+#inputDelivery {
+   margin: 0 1.2vw 0 0;
+}
+
+#descriptionBlockCalc > div > div:nth-child(2) {
+   text-align: right;
+   width: 18%;
+}
+
+#resultCalcDeposit {
+   width: 8vw;
+}
+
+#depositBid {
+   border: none;
+   border-bottom: 1px solid darkslategray;
+   height: 2.5vw;
+   margin: 0;
+   text-align: center;
+   width: 8vw;
+}
+
+.descriptionCalcHyphen {
+   margin: 0 3vw;
+}
+
+#sumCostBlockCalc {
+   align-items: center;
+   display: flex;
+   font: 2vw 'main';
+   justify-content: center;
+   margin: 1.5vw 0 0;
+   width: 100%;
+}
+
+#sumCostBlockCalc > div:nth-child(2) {
+   margin: 0 1vw 0 1.5vw;
+}
+
+@media (orientation: portrait) {
+   #h1AndH2BeginCalc {
+      margin: 0 0 0 -11vw;
+   }
+
+   #h1AndH2BeginCalc h1 {
+      font: bold 6vw 'main';
+      padding: 3vw 0 0;
+   }
+   
+   #h1AndH2BeginCalc h2 {
+      font: 5vw 'main';
+      letter-spacing: .07vw;
+   }
+
+   #inputBlockCalc {
+      flex-flow: wrap;
+      padding: 5vw 0 0;
+   }
+
+   #inputBlockCalc > div:first-child {
+      flex-basis: 100vw;
+      height: 10vw;
+      margin: 0 0 5vw;
+   }
+
+   #inputBlockCalc > div:first-child > div > input {
+      height: 7vw;
+   }
+
+   #brandBlockCalc #brandBlockOther > span {
+      order: 1;
+      text-align: left;
+   }
+
+   #inputBlockCalc > div {      
+      flex-basis: 28%;
+   }
+
+   #inputBlockCalc > div > select {
+      padding: 0;
+   }
+
+   #coursesAndBigPowerBlockCalc {
+      flex-flow: wrap;
+      margin: 7vw 0 0;
+   }
+
+   #coursesAndBigPowerBlockCalc > div:nth-child(-n+3) {
+      flex-basis: 28%;
+   }
+
+   #coursesAndBigPowerBlockCalc > div:nth-child(4) {
+      background: rgb(250, 250, 250);
+      display: none;
+      flex-basis: 100%;
+      height: 8vw;
+      line-height: 0vw;
+      margin: 5vw 0 0;
+   }
+
+   #kyushuFreightBlockCalc {
+      margin: 7vw 0 0;
+   }
+
+   #coursesAndBigPowerBlockCalc {
+      justify-content: space-evenly;
+      order: 1;
+   }
+
+   #coursesAndBigPowerBlockCalc > div:first-child {
+      margin: 0;
+   }
+
+   #coursesAndBigPowerBlockCalc > div:first-child > span {
+      line-height: 2.2vw;
+      text-align: center;
+      width: 100%;
+   }
+
+   #coursesAndBigPowerBlockCalc > div:first-child > input {
+      height: 7vw;
+      width: 20%;
+   }
+
+   #coursesAndBigPowerBlockCalc > div > input {
+      padding: 0;
+   }
+
+   #kyushuFreightBlockCalc > div {
+      flex-basis: 28%;
+      justify-content: space-around;
+   }
+
+   #kyushuFreightBlockCalc > div:first-child {
+      margin: 0;
+   }
+
+   #kyushuFreightBlockCalc > div:first-child > span {
+      text-align: center;
+      width: 100%;
+   }
+
+   #kyushuFreightBlockCalc > div:first-child > input {
+      height: 5vw;
+   }
+
+   #kyushuFreightBlockCalc #kyushuFreightPlug {
+      display: none;
+   }
+
+   #inputBlockCalc > div > div {
+      width: 50%;
+   }
+
+   #resultBlockCalc {
+      flex-flow: wrap;
+      margin: 8vw 0 0;
+      order: 1;
+   }
+
+   #inputCustom {
+      margin: 0 2.4vw 0 0;
+   }
+
+   .descriptionBlockCalc > div > div:nth-child(2) {
+      width: 32%;
+   }
+
+   .descriptionBlockCalc {
+      width: 100%;
+   }
+
+   .descriptionBlockDiv input {
+      height: 5vw;
+      width: 8vw;
+   }
+
+   #inputFreight {
+      margin: 0 7.7vw 0 0;
+   }
+
+   #inputDelivery {
+      margin: 0 4.8vw 0 0;
+   }
+
+   .descriptionDepositBlock {
+      font: 6vw 'main';
+      justify-content: center;
+      margin: 0 0 2vw;
+      width: 100%;
+   }
+
+   #resultCalcDeposit {
+      width: 22vw;
+   }
+
+   #depositBid {
+      height: 8vw;
+      width: 22vw;
+   }
+
+   #sumCostBlockCalc {
+      flex-flow: row wrap;
+      font: 7vw 'main';
+      justify-content: space-evenly;
+      margin: 3vw 0 0;
+      width: 100%;
+   }
+}

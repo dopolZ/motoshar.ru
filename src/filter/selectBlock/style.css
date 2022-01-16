@@ -1,0 +1,17 @@
+#selectBlock {
+   display: flex;
+   justify-content: space-between;
+   height: 16vw;
+   padding: 0 2.5vw;
+   position: relative;
+   width: 94%;
+}
+
+@media (orientation: portrait) {
+   #selectBlock {
+      flex-flow: wrap;
+      height: 100%;
+      margin: 10vw 0 0;
+      width: 100%;
+   }    
+}

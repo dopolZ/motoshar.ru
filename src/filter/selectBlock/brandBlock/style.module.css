@@ -1,0 +1,14 @@
+.brands {
+   align-items: center;
+   display: flex;
+   flex-flow: wrap;
+   justify-content: space-between;
+   width: 40%;
+}
+
+@media (orientation: portrait) {
+   .brands {
+      height: min-content;
+      width: 100%;
+   }
+}

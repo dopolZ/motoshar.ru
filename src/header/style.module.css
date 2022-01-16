@@ -1,0 +1,194 @@
+@keyframes logoStart {
+   from {
+      transform: rotateZ(0deg);
+   }
+
+   to {
+      transform: rotateZ(-14deg);
+   }
+}
+
+@keyframes logoOn {
+   from {
+      transform: rotateZ(-14deg);
+   }
+
+   50% {
+      transform: rotateZ(10deg);
+   }
+
+   to {
+      transform:rotateZ(-14deg);
+   }
+}
+
+.header {
+   align-items: center;
+   background: linear-gradient(
+      225deg, rgb(248 202 0) 29vw,
+              rgb(249 212 49) 29vw 33.5vw,
+              rgb(251 224 106) 33.5vw 38vw,
+              rgb(252 235 162) 38vw 42.5vw,
+              rgb(254 245 206) 42.5vw 47vw,
+              white 47vw);
+   box-shadow: -6.3vw 0 1vw grey;
+   color: black;
+   display: flex;
+   font-size: 2vw;
+   justify-content: space-around;
+   position: sticky;
+   top: 0;
+   transition: box-shadow .5s;
+   width: 100vw;
+   z-index: 30;
+   
+}
+
+.header::after {
+   background:
+      linear-gradient(225deg,
+         transparent 29vw, white 29vw, transparent 29.1vw),
+      linear-gradient(225deg,
+         transparent 33.5vw, white 33.5vw, transparent 33.6vw),
+      linear-gradient(225deg,
+         transparent 38vw, white 38vw, transparent 38.1vw),
+      linear-gradient(225deg,
+         transparent 42.5vw, white 42.5vw, transparent 42.6vw);
+   content: '';
+   height: 6vw;
+   position: absolute;
+   right: 0;
+   width: 70vw;
+   z-index: -1;
+}
+
+.logoDiv {
+   align-items: center;
+   cursor: pointer;
+   display: flex;
+   transition: transform .2s;
+}
+
+.logo {
+   background: url('../img/logoBlack.svg') no-repeat center /contain;
+   height: 5vw;
+   margin: .5vw 0;
+   position: relative;
+   transform-origin: center bottom;
+   width: 5vw;
+}
+
+.logoOn {
+   composes: logo;
+   animation: logoStart .5s forwards, logoOn 1s .5s infinite;
+   background: url('../img/logoBlackHead.svg') no-repeat center /contain;
+}
+
+@media (hover: hover) and (pointer: fine) {
+   .logoDiv:hover {
+      transform: scale(1.05);
+   }
+}
+
+.text p {
+   font: 2.5vw/1 'head';
+   margin: 0;
+}
+
+.text h1 {
+   font: 1.39vw/1 'main';
+   margin: 0;
+}
+
+.address {
+   text-transform: uppercase;
+}
+
+.menuMob {
+   display: none;
+}
+
+.phone p:after {
+   content: 'whatsapp';
+   font: 1.4vw 'main';
+   margin: 0 0 .5vw 1vw;
+}
+
+.phone p:before {
+   content: 'phone';
+   font: 1.4vw 'main';
+   margin: 0 1vw .5vw 0;
+}
+
+@media (orientation: portrait) {
+   .header {
+      background: linear-gradient(
+         225deg, rgb(248 202 0) 55%,
+         white 55%, rgb(249 212 49) 55.1%, rgb(249 212 49) 60%,
+         white 60%, rgb(251 224 106) 60.2%, rgb(251, 224, 106) 65%,
+         white 65%, rgb(252 235 162) 65.3%, rgb(252, 235, 162) 70%,
+         white 70%, rgb(254 245 206) 70.4%, rgb(254 245 206) 75%,
+         white 75%);
+      box-shadow: 0 0 5vw grey;
+      outline: none;
+   }
+
+   .header::after {
+      display: none;
+   }
+
+   .logo {
+      height: 20vw;
+      margin: 0;
+      width: 20vw;
+   }
+   
+   .text p {
+      font: 9vw/1 'head';
+      margin: 0;
+   }
+   
+   .text h1 {
+      font: 5vw/1 'main';
+      margin: 0;
+   }
+   
+   .phone, .addressP {
+      display: none;
+   }
+
+   .address {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      height: 7vw;
+      width: 10vw;
+   }
+
+   .menuMob {
+      background: black;
+      display: block;
+      height: 2px;
+   }
+
+   .menuMobOnSpan1 {
+      composes: menuMob;
+      background: darkred;
+      transform: translateY(3.25vw) rotate(225deg);
+   }
+
+   .menuMobOnSpan2 {
+      background: var(--mainBgColor);
+      height: 6vw;
+      position: fixed;
+      right: 0;
+      top: 19vw;
+      width: 20vw;
+   }
+
+   .menuMobOnSpan3 {
+      composes: menuMob;
+      background: darkred;
+      transform: translateY(-3.25vw) rotate(-225deg);
+   }
+}

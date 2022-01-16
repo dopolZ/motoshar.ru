@@ -1,0 +1,427 @@
+.resultList {
+   display: flex;
+   flex-flow: column nowrap;
+   margin: 0 0 0 2.5vw;
+   width: 89%;
+}
+
+.resultPlate {
+   display: flex;
+   flex-flow: wrap;
+   margin: 0 0 0 2.5vw;
+   width: 89%;
+}
+
+.resultItem {
+   border-radius: 2px;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   height: 6vw;
+   margin: 6px 0;
+   outline: 1px solid rgb(240, 240, 240);
+   position: relative;
+   width: 100%;
+}
+
+.resultItemPlate {
+   border-radius: 2px;
+   display: flex;
+   flex-flow: wrap;
+   justify-content: space-between;
+   height: 24vw;
+   margin: 1vw 0;
+   outline: 1px solid rgb(240, 240, 240);
+   position: relative;
+   width: 21.5vw;
+}
+
+.resultItemPlate:nth-child(4n+2) {
+   margin: 1vw .5vw 1vw 1vw;
+}
+
+.resultItemPlate:nth-child(4n+3) {
+   margin: 1vw 1vw 1vw .5vw;
+}
+
+.noResult {
+   align-items: center;
+   border: 1px solid darkslategrey;
+   font: 150% 'main';
+   justify-content: center;
+}
+
+@media (hover: hover) {
+   .resultItem:hover {
+      background: rgb(250, 250, 250);
+      outline: 2px solid rgb(230, 230, 230);
+   }
+
+   .resultItemPlate:hover {
+      background: rgb(250, 250, 250);
+      box-shadow: 0 .5vw 2vw darkgrey;
+   }
+}
+
+.itemDiv {
+   display: flex;
+   flex-flow: column;
+   justify-content: space-evenly;
+   padding: 0 0 0 2vw;
+}
+
+.itemDivPlate {
+   display: flex;
+   flex-flow: nowrap;
+   justify-content: space-between;
+   padding: 0 1vw;
+   width: 100%;
+}
+
+.itemImg {
+   composes: itemDiv;
+   background:
+      url('../../img/logoLightGrey.svg')
+      no-repeat center/50%;
+   cursor: no-drop;
+   padding: 0;
+   width: 9%;
+}
+
+.itemImg img {
+   cursor: zoom-in;
+   opacity: 0;
+   transition: opacity 1s;
+}
+
+@media (hover: hover) {
+   .itemImg img:hover {
+      transform: scale(1.15);
+   }
+}
+
+.itemImgPlate {
+   composes: itemDivPlate;
+   background:
+      url('../../img/logoLightGrey.svg')
+      no-repeat center/50%;
+   border: none;
+   cursor: no-drop;
+   height: 16.3vw;
+   outline: 1px solid rgb(240, 240, 240);
+   padding: 0;
+}
+
+.itemImgPlate img {
+   cursor: zoom-in;
+}
+
+.itemLot {
+   composes: itemDiv;
+   width: 20%;
+}
+
+.itemLotPlate {
+   composes: itemDivPlate;
+   border-bottom: 1px dotted;
+   flex-flow: nowrap;
+   justify-content: space-between;
+   margin: 0 1vw;
+   width: 91%;
+}
+
+.itemLotPlate p {
+   padding: 0;
+}
+
+.itemLotPlate p:nth-child(2) {
+   display: none;
+}
+
+.itemMarka {
+   composes: itemDiv;
+   width: 23%;
+}
+
+.itemMarkaPlate {
+   composes: itemDivPlate;
+   border: none;
+   justify-content: space-evenly;
+}
+
+.itemMarkaPlate p:nth-child(1) {
+   text-transform: capitalize;
+}
+
+.itemMarkaPlate p:nth-child(2) {
+   font-weight: bold;
+   text-align: center;
+   text-transform: uppercase;
+}
+
+.itemMarkaPlate p:nth-child(3) {
+   display: none;
+}
+
+.itemYear {
+   composes: itemDiv;
+   width: 20%;
+}
+
+.itemYearPlate {
+   composes: itemDivPlate;
+}
+
+.itemCost {
+   composes: itemDiv;
+   width: 20%;
+}
+
+.itemCostPlate {
+   composes: itemDivPlate;
+}
+
+.itemCostPlate p:nth-child(2) {
+   font-weight: bold;
+}
+
+.itemRating {
+   composes: itemDiv;
+   align-items: center;
+   justify-content: center;
+   padding: 0;
+   width: 7%;
+}
+
+.itemRatingPlate {
+   composes: itemDivPlate;
+   background: rgba(211, 211, 211, .3);
+   border-radius: 1px;
+   color: black;
+   outline: 1px solid dimgrey;
+   padding: 2px 3px;
+   position: absolute;
+   right: 5px;
+   top: 5px;
+   width: auto;
+}
+
+.itemRatingPlate p:nth-child(2) {
+   margin: 0 0 0 .5vw;
+}
+
+.ratingPlate {
+   font-weight: bold;
+}
+
+.itemDivLotPlate {
+   border-bottom: 1px dotted;
+   flex-flow: nowrap;
+   margin: 0 3vw;
+   padding: 0;
+   text-align: center;
+   width: 79%;
+}
+
+.itemDivLotPlate p {
+   width: 50%;
+}
+
+.plugOnClick {
+   cursor: pointer;
+   height: inherit;
+   position: absolute;
+   right: 0;
+   width: 91%;
+}
+
+.plugOnClickPlate {
+   bottom: 0;
+   cursor: pointer;
+   height: 8vw;
+   position: absolute;
+   width: 100%;
+}
+
+:global .arrowUp {
+   bottom: 2.5vw;
+   display: none;
+   height: 5vw;
+   position: fixed;
+   right: 50.5vw;
+   width: 5vw;
+}
+
+@media (hover: hover) {
+   :global .arrowUp:hover {
+      transform: scale(1.2);
+   }
+}
+ 
+:global .arrowUp span {
+   background: var(--mainBgColor);
+   height: .5vw;
+   position: absolute;
+   top: 60%;
+   width: 63%;
+}
+ 
+:global .arrowUp span:first-child {  
+   border-radius: 5px 0;
+   left: 39%;
+   transform: rotate(35deg);  
+}
+ 
+:global .arrowUp span:last-child {
+   border-radius: 0 5px;  
+   left: -6%;  
+   transform: rotate(-35deg);
+}
+ 
+:global .arrowUpActive {
+   display: block;
+}
+
+@media (orientation: portrait) {
+   .resultPlate {
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+   }
+
+   .resultItemPlate:nth-child(4n+2) {
+      margin: 3vw 0;
+   }
+   
+   .resultItemPlate:nth-child(4n+3) {
+      margin: 3vw 0;
+   }
+
+   .resultItemPlate {
+      border-radius: 0;
+      justify-content: space-between;
+      height: auto;
+      margin: 3vw 0;
+      outline: 1px solid lightgrey;
+      width: 93vw;
+   }
+
+   .itemDivPlate p:nth-child(1) {
+      text-align: left;
+      width: 30%;
+   }
+
+   .itemDivPlate p:nth-child(2) {
+      text-align: center;
+      width: 39%;
+   }
+
+   .itemDivPlate p:nth-child(3) {
+      text-align: right;
+      width: 31%;
+   }
+
+   .itemMarkaPlate {
+      background: rgb(250, 250, 250);
+      border: none;
+      border-radius: 2px 2px 0 0;
+      justify-content: start;
+      left: -1%;
+      outline: 1px solid darkgrey;
+      padding: 1vw;
+      position: absolute;
+      width: 102%;
+   }
+
+   .itemMarkaPlate p {
+      margin: 0 1vw;
+      width: unset !important;
+   }
+
+   .itemLotPlate p:nth-child(1) {
+      padding: 0;
+      position: absolute;
+      right: 1vw;
+      top: 1vw;
+      width: auto;
+      z-index: 1;
+   }
+
+   .itemImgPlate {
+      height: 71vw;
+      padding: 0;
+      width: 93vw;
+   }
+
+   .itemRatingPlate {
+      background: white;
+      border-radius: unset;
+      color: unset;
+      justify-content: start;
+      left: 0;
+      outline: unset;
+      padding: 1vw;
+      position: absolute;
+      top: 66vw;
+      width: 37.5vw;
+   }
+
+   .itemRatingPlate p {
+      width: auto !important;
+   }
+
+   .itemRatingPlate p:nth-child(2) {
+      margin: 0 0 0 1vw;
+   }
+   
+   .itemLotPlate {
+      align-items: center;
+      background: white;
+      border-bottom: unset;
+      flex-flow: wrap;
+      justify-content: space-between;
+      margin: -5vw 0 0 37vw;
+      padding: 0 1vw;
+      width: 100%;
+   }
+
+   .itemLotPlate p:nth-child(2) {
+      display: block;
+      font-weight: bold;
+      margin: 1vw 0;
+      width: auto;
+   }
+
+   .itemLotPlate p:nth-child(3) {
+      width: auto;
+   }
+
+   .itemYearPlate {
+      border-bottom: 1px dotted rgb(240, 240, 240);
+      border-top: 1px dotted rgb(240, 240, 240);
+      padding: 1vw;
+   }
+
+   .itemCostPlate {
+      padding: 1vw;
+   }
+
+   .plugOnClickPlate {
+      height: 93vw;
+   }
+
+   :global .arrowUp {
+      height: 15vw;
+      right: 42.5vw;
+      width: 15vw;
+   }
+
+   :global .arrowUpActive {
+      display: block;
+   }
+   
+   :global .arrowUp span {
+      height: 1.5vw;
+   }
+}

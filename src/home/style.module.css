@@ -1,0 +1,123 @@
+.h1 {
+   font: bold 2.5vw 'main';
+   margin: 3vw 0 0;
+   text-align: center;
+   text-transform: uppercase;
+   width: 100%;
+}
+
+.h2 {
+   font: 1.5vw 'main';
+   letter-spacing: 3px;
+   margin: 0 0 3vw;
+   text-align: center;
+   width: 100%;
+}
+
+.section {
+   align-items: center;
+   display: flex;
+   flex-flow: wrap;
+   height: calc(100vh - 6vw);
+   margin: 0;
+   position: relative;
+   width: 94%;
+}
+
+.section1 {
+   composes: section;
+   height: calc(100vh - 20vw);
+   margin: 0 0 6vw;
+}
+
+.sectionLast {
+   composes: section;
+   height: calc(100vh - 9.1vw);
+}
+
+.img {
+   width: 50%;
+}
+
+.description {
+   display: flex;
+   flex-flow: column;
+   font: 110% 'main';
+   width: 50%
+}
+
+.buttons {
+   display: flex;
+   flex-flow: wrap;
+   padding: 0 0 0 5.5vw;
+}
+
+.link {
+   color: inherit;
+   text-decoration: none;
+}
+
+@media (orientation: portrait) {
+   .h1 {
+      font: bold 6.8vw 'main';
+      margin: 10vw 0 0;
+      padding: 0;
+   }
+   
+   .h2 {
+      font: 5vw 'main';
+      letter-spacing: 0;
+      margin: 0;
+      padding: 0;
+   }
+   
+   .section {
+      flex-flow: column;
+      height: calc(100vh - 20vw);
+      margin: 0;
+      padding: 0;
+      width: 100%;
+   }
+   
+   .section1 {
+      height: 70vh;
+   }
+
+   .sectionLast {
+      height: calc(100vh - 30vw);
+   }
+   
+   .img {
+      width: 100%;
+   }
+   
+   .description {
+      width: 100%
+   }
+   
+   .description h2 {
+      font: bold 6vw 'main';
+      text-align: center;
+   }
+   
+   .description p {
+      font: 5vw 'main';
+      margin: 2vw 0 0;
+      text-align: center;
+   }
+   
+   .buttons {
+      justify-content: space-around;
+      padding: 0;
+   }
+
+   .link {
+      color: inherit;
+      text-decoration: none;
+      width: 40%;
+   }
+
+   .link > div {
+      width: 100%;
+   }
+}

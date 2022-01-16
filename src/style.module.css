@@ -1,0 +1,150 @@
+@keyframes imgWrapper {
+   from {
+      opacity: 0;
+   }
+  
+   to {
+      opacity: 1;
+   }
+}
+
+@keyframes imgWrapperList {
+   from {
+      background: 
+         url('./img/logoGrey.svg') no-repeat center/27%;
+   }
+
+   50% { 
+      background:
+         url('./img/logoGrey.svg') no-repeat center/30%;
+   }
+  
+   to {
+      background:
+         url('./img/logoGrey.svg') no-repeat center/27%;
+   }
+}
+
+@keyframes imgWrapperPlate {
+   from {
+      background: 
+         url('./img/logoDarkSlateGrey.svg') no-repeat center/27%;
+   }
+
+   50% { 
+      background:
+         url('./img/logoDarkSlateGrey.svg') no-repeat center/30%;
+   }
+  
+   to {
+      background:
+         url('./img/logoDarkSlateGrey.svg') no-repeat center/27%;
+   }
+}
+
+.imgWrapper {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   height: calc(100vh - 6vw);
+   position: fixed;
+   top: 6vw;
+   z-index: 1;
+}
+ 
+.imgWrapperList {
+   composes: imgWrapper;
+   animation: imgWrapper .4s, imgWrapperList 2s infinite;
+   left: 15.5vw;
+}
+
+.imgWrapperPlate {
+   composes: imgWrapper;
+   animation: imgWrapper .4s, imgWrapperPlate 2s infinite;
+   left: 15.5vw;
+}
+
+.imgWrapperLot {
+   composes: imgWrapper;
+   animation: imgWrapper .4s;
+   backdrop-filter: blur(2px) grayscale(1);
+   background: rgba(211, 211, 211, .5);
+   width: 100%;
+}
+
+.img {
+   box-shadow: 0 0 3vw dimgrey;
+   cursor: zoom-out;
+   opacity: 0;
+   outline: 1px solid white;
+   transition: opacity .4s;
+   width: 63.1vw;
+}
+
+.scrlNo {
+   display: none;
+}
+ 
+.scrllLeft {
+   width: 15vw;
+}
+ 
+.scrlRight {
+   margin: 0 6vw 0 0;
+   width: 15vw;
+}
+ 
+.scrllLeft:active img {
+   filter: contrast(2);
+   transform: scale(1.2);
+}
+ 
+.scrlRight:active img {
+   filter: contrast(2);
+   transform: scale(1.2);
+}
+ 
+.scrllLeft img, .scrlRight img {
+   filter: contrast(1) contrast(1.3);
+   margin: auto;
+   width: 10vw;
+}
+
+.wrapNav {
+   bottom: 0;
+   height: calc(100vh - 6vw);
+   position: fixed;
+   right: 0;
+   width: 6vw;
+   z-index: 12;
+}
+
+@media (orientation: portrait) {
+   .imgWrapperLot {
+      flex-flow: wrap;
+      height: calc(100vh - 20vw);
+      top: 20vw;
+      width: 100vw;
+      z-index: 13;
+   }
+
+   .img {
+      margin: 10vw 0 0;
+      order: -1;
+      width: 100vw;
+   }
+
+   .scrllLeft {
+      margin: 0;
+      width: 50%;
+   }
+    
+   .scrlRight {
+      margin: 0;
+      width: 50%;
+   }
+
+   .scrllLeft img, .scrlRight img {
+      width: 70%;
+   }
+}

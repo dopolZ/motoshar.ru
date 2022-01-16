@@ -1,0 +1,163 @@
+.nav {
+   background: linear-gradient(
+      225deg, var(--mainBgColor) 5vw, transparent 50vh);
+   display: flex;
+   flex-flow: column;
+   justify-content: space-evenly;
+   height: calc(100vh - 6vw);
+   position: fixed;
+   right: 0;
+   top: 6vw;
+   z-index: 20;
+}
+
+.nav::after {
+   background: radial-gradient(
+      80% 65% at 100% 5%, rgb(105, 105, 105, .3), transparent);
+   content: '';
+   height: calc(100vh - 6vw);
+   right: 6vw;
+   position: absolute;
+   top: 0;
+   width: 1vw;
+   z-index: -1;
+}
+
+.icon {
+   height: 2vw;
+   margin: 0 2vw;
+   opacity: .3;
+   position: relative;
+   transition: .1s;
+   width: 2vw;
+}
+
+.icon > img {
+   position: relative;
+   z-index: 2;
+}
+
+.iconFilter {
+   composes: icon;
+}
+
+@media (hover: hover) and (pointer: fine) {
+   .icon:hover {
+      opacity: 1;
+      transform: scale(1.7);
+   }
+}
+
+.icon > div {
+   background: white;
+   border-radius: 5px 2px 2px 5px;
+   font: bold 1vw 'main';
+   height: 2.7vw;
+   line-height: 2.5vw;
+   overflow: hidden;
+   position: absolute;
+   right: -.3vw;
+   top: -.35vw;
+   width: 0vw;
+   z-index: 1;
+}
+
+@media (hover: hover) {
+   .icon:hover > div {
+      box-shadow: 0 0 .5vw darkgrey;
+      padding: 0 3vw 0 1vw;
+      width: auto;
+   }
+}
+
+.iconActive {
+   composes: icon;
+   opacity: 1;
+   transform: scale(1.7);
+}
+
+.iconActiveFilter {
+   composes: iconActive;
+}
+
+@media (orientation: portrait) {
+   .nav {
+      align-items: flex-end;
+      background: white;
+      box-shadow: -1px 0 2vw 1px grey;
+      height: calc(100vh - 20vw + 1px);
+      right: -102vw;
+      transition: right .3s;
+      top: calc(20vw - 1px);
+      width: 100vw;
+      z-index: 11;
+   }
+   
+   .navOn {
+      composes: nav;
+      right: 0;
+   }
+
+   .navOn::before {
+      background: linear-gradient(225deg, var(--mainBgColor) 20vw, white 85%);
+      bottom: 0;
+      content: '';
+      height: calc(100vh - 20vw);
+      position: fixed;
+      right: 0;
+      width: 20vw;
+   }
+
+   .nav::after {
+      background: radial-gradient(
+         70% 60% at 100% 10%, rgb(105, 105, 105, .3), transparent);
+      right: 20vw;
+      width: 4vw;
+   }
+
+   .icon {
+      border-radius: 3vw;
+      height: 10vw;
+      margin: 0 5vw;
+      opacity: 1;
+      width: 10vw;
+   }
+
+   .iconFilter {
+      margin: -45vw 4vw;
+   }
+
+   .icon > div {
+      background: unset;
+      font: bold 8vw 'main';
+      height: auto;
+      margin: 0 20vw 0 0;
+      opacity: .6;
+      width: auto;
+   }
+
+   .icon img {
+      opacity: .3;
+   }
+
+   .iconActive {
+      opacity: 1;
+      transform: unset;
+   }
+
+   .iconActive img {
+      opacity: 1;
+      transform: scale(1.3);
+   }
+
+   .iconActiveFilter {
+      margin: -45vw 4vw;
+   }
+
+   .iconActive > div {
+      border-bottom: 1px solid;
+      border-radius: unset;
+      opacity: 1;
+      width: 45vw;
+   }
+}

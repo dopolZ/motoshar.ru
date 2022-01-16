@@ -1,0 +1,68 @@
+#modelBlock {
+   align-items: flex-end;
+   background: rgba(250, 250, 250);
+   border: 1px solid;
+   border-radius: 3px;
+   cursor: pointer;
+   display: flex;
+   flex-flow: column;
+   height: 95%;
+   margin: .28vw 0 0;
+   overflow: auto;
+   position: relative;
+   width: 38%;
+}
+
+#modelBlockEmpty {
+   align-items: flex-end;
+   background: rgba(250, 250, 250);
+   border: 1px solid;
+   border-radius: 3px;
+   cursor: pointer;
+   display: flex;
+   flex-flow: column;
+   height: 95%;
+   margin: .28vw 0 0;
+   overflow: auto;
+   position: relative;
+   width: 38%;   
+}
+
+.modelBlockItem {
+   align-items: flex-end;
+   border-radius: 3px;
+   display: flex;
+   margin: 3px 10px 3px 10px;
+   padding: 0 10px;
+   text-transform: uppercase;
+   width: 94%;
+}
+
+@media (hover: hover) {
+   .modelBlockItem:hover {
+      box-shadow: 0 0 0 1px;   
+   }
+}
+
+.modelBlockItem span:first-child {
+   width: 90%;
+}
+
+@media (orientation: portrait) {
+   #modelBlock {
+      height: min-content;
+      margin: 6vw 0;
+      max-height: 50vw;
+      width: 100%;
+   }
+
+   #modelBlockEmpty {
+      display: none;
+   }
+
+   .modelBlockItem {
+      margin: 5px 10px;
+      text-transform: uppercase;
+      width: 97%;
+   }
+}
