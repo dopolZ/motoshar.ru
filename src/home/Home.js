@@ -1,6 +1,14 @@
 import Button from '../buttons/Button'
 import NavHome from '../nav/navHome/NavHome'
+import imgStat from './img/stat.png'
 import imgOnline from './img/online.png'
+import imgCalc from './img/calc.png'
+import imgPrice from './img/price.png'
+import imgDelivery from './img/delivery.png'
+import imgHi from './img/hi.png'
+import imgRepair from './img/repair.png'
+import imgStore from './img/store.png'
+import imgContacts from './img/contacts.png'
 import Footer from '../footer/Footer'
 import {mainState} from '../initData'
 import stl from './style.module.css'
@@ -61,7 +69,7 @@ function Home(props) {
             работаем от подбора до вручения, по всей России
          </h2>
          <section className={stl.section1}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgStat} alt='img'></img>
             <div className={stl.description}>
                <h2>Начинайте подбор в статистике торгов</h2>
                <CheckMobile home={{caption: 'section1'}} />
@@ -113,7 +121,7 @@ function Home(props) {
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgCalc} alt='img'></img>
             <div className={stl.description}>
                <CheckMobile home={{caption: 'section3'}} />
                <div className={stl.buttons}>
@@ -126,41 +134,41 @@ function Home(props) {
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgPrice} alt='img'></img>
             <div className={stl.description}>
                <h2>Этапы оплаты в процессе заказа</h2>
                <CheckMobile home={{caption: 'section4'}} />
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgDelivery} alt='img'></img>
             <div className={stl.description}>
             <CheckMobile home={{caption: 'section5'}} />
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgHi} alt='img'></img>
             <div className={stl.description}>
                <h2>У нас есть важные преимущества</h2>
                <CheckMobile home={{caption: 'section6'}} />
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgRepair} alt='img'></img>
             <div className={stl.description}>
                <h2>Постпродажное обслуживание у нас</h2>
                <CheckMobile home={{caption: 'section7'}} />
             </div>
          </section>
          <section className={stl.section}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgStore} alt='img'></img>
             <div className={stl.description}>
                <h2>Ответственное & зимнее хранение</h2>
                <CheckMobile home={{caption: 'section8'}} />                
             </div>
          </section>
          <section className={stl.sectionLast}>
-            <img className={stl.img} src={imgOnline} alt='img'></img>
+            <img className={stl.img} src={imgContacts} alt='img'></img>
             <div className={stl.description}>
                <h2>Все наши контакты</h2>
                <CheckMobile home={{caption: 'section9'}} />            

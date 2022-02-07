@@ -30,20 +30,27 @@
    margin: 0 0 6vw;
 }
 
+.section1::after {
+   content: '';
+   position: absolute;
+   width: 100%;
+}
+
 .sectionLast {
    composes: section;
    height: calc(100vh - 9.1vw);
 }
 
 .img {
-   width: 50%;
+   filter: drop-shadow(5px 5px 1px lightgrey);
+   width: 53%;
 }
 
 .description {
    display: flex;
    flex-flow: column;
    font: 110% 'main';
-   width: 50%
+   width: 47%
 }
 
 .buttons {
@@ -83,8 +90,17 @@
       height: 70vh;
    }
 
+   .section:nth-of-type(2) img {
+      margin: 0 5vw 0 0;
+      transform: scale(1.1);
+   }
+
    .sectionLast {
       height: calc(100vh - 30vw);
+   }
+
+   .section1 img {
+      margin: 0 11vw 0 0;
    }
    
    .img {
