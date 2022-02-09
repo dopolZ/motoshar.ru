@@ -515,32 +515,6 @@ function CheckMobile(props) {
 
          return lotCard[props[req].caption]
 
-      case 'callback':
-         const {data} = props.callback
-
-         const callback = {
-            linkToLot: state ?
-               <>
-                  <p>
-                     прикреплена ссылка на лот - <b>{data.lot_num}<br />
-                     {data.marka_name.toUpperCase()}&nbsp;
-                     {data.model_name}</b>
-                  </p>
-               </>
-            :
-               <>
-                  <p>
-                     ссылка на лот
-                     &ensp;<b>{data.lot_num}&nbsp;-&nbsp;
-                     {data.marka_name.toUpperCase()}&nbsp;
-                     {data.model_name}</b>&nbsp;
-                     прикреплена к заявке
-                  </p>
-               </>
-         }
-
-         return callback[props[req].caption]
-
       default: return <></>
    }
 }

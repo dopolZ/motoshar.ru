@@ -121,10 +121,6 @@
    letter-spacing: 3px;
 }
 
-.lot {
-   text-align: center;
-}
-
 .inputs {
    align-items: center;
    display: flex;
@@ -203,10 +199,6 @@
       font: 5vw 'main';
       letter-spacing: .07vw;
       margin: 4vw 4vw 0;
-      text-align: center;
-   }
-   
-   .lot {
       text-align: center;
    }
 

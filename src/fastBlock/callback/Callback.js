@@ -99,22 +99,26 @@ function Callback() {
                onClick={onClickClose}
             />
             <Answer />
-            <div className={stl.h1h2}>
-               <h1>обратный звонок</h1>
-               <h2>
-                  оставьте контакты свяжемся с Вами в ближайшее время
-               </h2>
-            </div>
             {
                mainState.lotCard?.state ?
-                  <div className={stl.lot}>
-                     <CheckMobile callback={{
-                        caption: 'linkToLot',
-                        data: mainState.lotCard.state,
-                     }} />
+                  <div className={stl.h1h2}>
+                     <h1>
+                        заказать лот&nbsp;-&nbsp;
+                        {mainState.lotCard.state.lot_num}
+                     </h1>
+                     <h2>
+                        {mainState.lotCard.state.marka_name.toUpperCase()}
+                        &ensp;
+                        {mainState.lotCard.state.model_name}
+                     </h2>
                   </div>
                :
-                  <></>
+                  <div className={stl.h1h2}>
+                     <h1>обратный звонок</h1>
+                     <h2>
+                        оставьте контакты свяжемся с Вами в ближайшее время
+                     </h2>
+                  </div>
             }
             <div className={stl.inputs}>
                <input

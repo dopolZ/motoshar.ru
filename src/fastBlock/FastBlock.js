@@ -12,6 +12,9 @@ const FastBlock = () => {
       case 'заявка':
          return <Callback />
 
+      case 'заказать':
+         return <Callback />
+
       case 'калькулятор':
          return <CalcPlug />
 

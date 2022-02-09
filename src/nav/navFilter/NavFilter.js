@@ -24,7 +24,11 @@ function NavFilter () {
          e.target.nextSibling.textContent :
          e.target.textContent
          
-      if (target === 'заявка' || target === 'калькулятор') {   
+      if (
+         target === 'заявка' ||
+         target === 'заказать' ||
+         target === 'калькулятор'
+      ) {   
          history.location.fast ?
             history.replace({
                fast: target,
@@ -58,6 +62,11 @@ function NavFilter () {
       }
    }
 
+   const getImg = str => str === 'заявка' && lotCard ?
+         require(`../img/заказать.png`)
+      :
+         require(`../img/${str}.png`)
+
    for (const prop in navName) {
       navActive.push(
          <div
@@ -71,9 +80,9 @@ function NavFilter () {
          >
             <img
                alt="icon"
-               src={require(`../img/${prop}.png`)}
+               src={getImg(prop)}
             />
-            <div>{prop}</div>
+            <div>{prop === 'заявка' && lotCard ? 'заказать' : prop}</div>
          </div>
       )
    }
