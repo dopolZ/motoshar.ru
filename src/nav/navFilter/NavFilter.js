@@ -6,8 +6,9 @@ import {useState} from 'react'
 function NavFilter () {
    const history = useHistory()
    const match = useRouteMatch()
+   const [state, setState] = useState({})
    const [mobOn, setMobOn] = useState(false)
-   mainState.nav = {mobOn, setMobOn}
+   mainState.nav = {mobOn, setMobOn, state, setState}
 
    const navActive = []
    const lotCard = history.location.pathname.includes('lot')
@@ -45,7 +46,7 @@ function NavFilter () {
          } else return 
       } else if (
          mainState.filterBlock?.state.front ===
-         navName[target].slice(1)
+         navName[target.split(' ')[0]].slice(1)
       ) {
          mainState.fastBlock.state.caption ?
             history.go(-2) : history.goBack()
@@ -56,7 +57,13 @@ function NavFilter () {
          mainState.resultBlock = {}
 
          history.push({
-            pathname: navName[target],
+            pathname: lotCard ?
+                  navName[target.split(' ')[0]] + '/'
+                  + mainState.lotCard.state.marka_name + '/'
+                  + mainState.lotCard.state.eng_v + '/'
+                  + mainState.lotCard.state.model_name
+               :
+                  navName[target],
             from: match.url,
          })
       }
@@ -66,6 +73,18 @@ function NavFilter () {
          require(`../img/заказать.png`)
       :
          require(`../img/${str}.png`)
+
+   const getCaption = str =>
+      str === 'статистика' && lotCard ?
+         (
+            <div className={stl.statName}>
+               статистика <br />
+               {mainState.lotCard.state.model_name}
+            </div>
+         )
+      :
+      str === 'заявка' && lotCard ?
+         <div>заказать</div> : <div>{str}</div>
 
    for (const prop in navName) {
       navActive.push(
@@ -82,7 +101,7 @@ function NavFilter () {
                alt="icon"
                src={getImg(prop)}
             />
-            <div>{prop === 'заявка' && lotCard ? 'заказать' : prop}</div>
+            {getCaption(prop)}
          </div>
       )
    }

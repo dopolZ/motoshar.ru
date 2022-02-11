@@ -5,7 +5,6 @@ import { renderLotPlate } from './renderLotPlate'
 import { renderLotList } from './renderLotList'
 
 export function fetchResultBlockStat() {
-
    let {brand, engine, model} = mainState.selectBlock
 
    if (Object.keys(model).length === 0) return

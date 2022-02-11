@@ -24,6 +24,7 @@ export function fetchLotCard(id) {
    .then(res => res.json() )
    .then( res => {
       mainState.lotCard.setState(res.lotList[0])
+      mainState.nav.setState({})
       mainState.preloader.setState()
    })
    .catch(err => {

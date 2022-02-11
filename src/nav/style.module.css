@@ -49,11 +49,12 @@
 }
 
 .icon > div {
+   align-items: center;
    background: white;
    border-radius: 5px 2px 2px 5px;
+   display: flex;
    font: bold 1vw 'main';
    height: 2.7vw;
-   line-height: 2.5vw;
    overflow: hidden;
    position: absolute;
    right: -.3vw;
@@ -65,8 +66,8 @@
 @media (hover: hover) {
    .icon:hover > div {
       box-shadow: 0 0 .5vw darkgrey;
-      padding: 0 3vw 0 1vw;
-      width: auto;
+      padding: 0 3vw .1vw 1vw;
+      width: max-content;
    }
 }
 
@@ -124,7 +125,11 @@
    }
 
    .iconFilter {
-      margin: -45vw 4vw;
+      margin: -40vw 4vw;
+   }
+
+   .icon img {
+      opacity: .3;
    }
 
    .icon > div {
@@ -133,11 +138,12 @@
       height: auto;
       margin: 0 20vw 0 0;
       opacity: .6;
-      width: auto;
+      text-align: right;
+      width: max-content;
    }
 
-   .icon img {
-      opacity: .3;
+   .icon .statName {
+      top: -5vw;
    }
 
    .iconActive {

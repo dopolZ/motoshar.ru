@@ -173,16 +173,10 @@
       top: 0;
    }
    
-   .mainBg {
-      /* height: calc(100vh - 20vw);
-      top: 20vw;
-      width: 100vw; */
-   }
-   
    .main {
       box-shadow: 0 0 5vw darkgrey;
       justify-content: space-evenly;
-      height: 60vh;
+      height: 50vh;
       margin: 10vw 0 0;
       width: 80%;
    }

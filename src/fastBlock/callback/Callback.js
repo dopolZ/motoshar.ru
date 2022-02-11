@@ -3,7 +3,6 @@ import stl from './style.module.css'
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import CloseButton from '../../closeButton/CloseButton'
-import CheckMobile from '../../CheckMobile'
 
 function Callback() {
    const [state, setState] = useState()
