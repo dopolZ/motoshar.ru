@@ -77,8 +77,7 @@ input, button, textarea, select {
 }
 
 html, body {
-  /* --mainBgColor: rgb(255,204,19); */
-  --mainBgColor: rgb(248, 202, 0);
+  --mainBgColor: rgb(246, 188, 0);
   color: darkslategray;
   font: 1.3vw 'main';
   scrollbar-width: none;
