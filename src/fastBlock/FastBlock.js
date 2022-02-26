@@ -5,10 +5,10 @@ import Callback from "./callback/Callback"
 import ImgWrapper from "./imgWrapper/ImgWrapper"
 
 const FastBlock = () => {
-   const [state, setState] = useState({})
+   const [state, setState] = useState()
    mainState.fastBlock = {state, setState}
    
-   switch (state.caption) {
+   switch (state) {
       case 'заявка':
          return <Callback />
 

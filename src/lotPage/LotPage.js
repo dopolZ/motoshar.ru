@@ -5,10 +5,15 @@ import NavFilter from "../nav/navFilter/NavFilter"
 import {fetchLotCard} from "./fetchLotCard"
 import {mainState} from "../initData"
 import CloseButton from "../closeButton/CloseButton"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import {useEffect} from "react"
 
-function LotPage(props) {
-   let {id} = props.match.params
+function LotPage() {
+   const location = useLocation()
+   const navigate = useNavigate()
+   const params = useParams()
+
+   let {id} = params
 
    if (mainState.lotCard?.state?.id !== id) fetchLotCard(id)   
 
@@ -25,9 +30,9 @@ function LotPage(props) {
       )
    
    const choiceLotCard = {
-      full: <LotCardFull {...props} lot={lot} />,
-      main: <LotCardMain {...props} lot={lot} />,
-      empty: <LotCardEmpty {...props} lot={lot} />,    
+      full: <LotCardFull lot={lot} />,
+      main: <LotCardMain lot={lot} />,
+      empty: <LotCardEmpty lot={lot} />,    
    }
 
    const onClickClose = () => {
@@ -43,32 +48,35 @@ function LotPage(props) {
             num >= 751 && num <= 1300 ? '751-1300' : '1301'
 
          if (date >= 0) {
-            props.history.push({
-               pathname: '/online/' + lot.marka_name
-                  + '/' + checkEngine(lot.eng_v),
-               from: props.history.location.pathname,
-            })
+            navigate(
+               '/online/' + lot.marka_name + '/' + checkEngine(lot.eng_v),
+               {
+                  state: {
+                     from: location.pathname,
+                  }
+               }
+            )
          } else {
-            props.history.push({
-               pathname: '/stat/' + lot.marka_name
-                  + '/' + checkEngine(lot.eng_v)
-                  + '/' + lot.model_name,
-               from: props.history.location.pathname,
-            })                 
+            navigate(
+               '/stat/' + lot.marka_name + '/' + checkEngine(lot.eng_v)
+               + '/' + lot.model_name,
+               {
+                  state: {
+                     from: location.pathname,
+                  }
+               }
+            )                 
          }
-      } else if (mainState.fastBlock.state.caption) {
-         props.history.go(-2)
-      } else props.history.goBack()
+      } else if (mainState.fastBlock.state) {
+         navigate(-2)
+      } else navigate(-1)
    }
 
    useEffect(() => {
-      mainState.fastBlock.setState({
-         caption: props.location.fast,
-         data: props.location.data,
-      })
+      mainState.fastBlock.setState(location.state?.fast)
 
-      mainState.header.setMenuMobSpan(props.location.mobMenu)
-      mainState.nav.setMobOn(props.location.mobMenu)
+      mainState.header.setMenuMob(location.mobMenu)
+      mainState.nav.setNavMob(location.mobMenu)
    })
 
    return (

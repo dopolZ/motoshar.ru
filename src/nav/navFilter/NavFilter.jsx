@@ -1,24 +1,26 @@
 import stl from '../style.module.css'
-import {useHistory, useRouteMatch} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import { mainState } from '../../initData'
 import {useState} from 'react'
 
 function NavFilter () {
-   const history = useHistory()
-   const match = useRouteMatch()
+   const navigate = useNavigate()
+   const location = useLocation()
    const [state, setState] = useState({})
-   const [mobOn, setMobOn] = useState(false)
-   mainState.nav = {mobOn, setMobOn, state, setState}
+   const [navMob, setNavMob] = useState(false)
+   mainState.nav = {navMob, setNavMob, state, setState}
 
    const navActive = []
-   const lotCard = history.location.pathname.includes('lot')
+   const lotCard = location.pathname.includes('lot')
 
    const navName = {
       заявка: '',
-      статистика: '/stat',
-      торги: '/online',
-      калькулятор: '/calc',
+      статистика: 'stat',
+      торги: 'online',
+      калькулятор: 'calc',
    }
+
+   const checkUrl = () => location.pathname.split('/')[1]
 
    const onClick = e => {
       const target = e.target.localName === 'img' ?
@@ -30,41 +32,47 @@ function NavFilter () {
          target === 'заказать' ||
          target === 'калькулятор'
       ) {   
-         history.location.fast ?
-            history.replace({
-               fast: target,
-               from: history.location.pathname,
+         location.state?.fast ?
+            navigate(location.pathname, {
+               replace: true,
+               state: {
+                  fast: target,
+                  from: location.pathname,
+               }
             })
          :
-            history.push({
-               fast: target,
-               from: history.location.pathname,
+            navigate(location.pathname, {
+               state: {
+                  fast: target,
+                  from: location.pathname,
+               }
             })
-      } else if (match.url === navName[target] && !lotCard) {      
-         if (history.location.fast) {
-            history.goBack()
+      } else if (checkUrl() === navName[target] && !lotCard) {      
+         if (location.state?.fast) {
+            navigate(-1)
          } else return 
       } else if (
          mainState.filterBlock?.state.front ===
-         navName[target.split(' ')[0]].slice(1)
+         navName[target.split(' ')[0]]
       ) {
-         mainState.fastBlock.state.caption ?
-            history.go(-2) : history.goBack()
+         mainState.fastBlock.state ?
+            navigate(-2) : navigate(-1)
       } else {
          mainState.modelBlock = {}
          mainState.filterBlock = {}
          mainState.infoBlock = {}
          mainState.resultBlock = {}
 
-         history.push({
-            pathname: lotCard ?
-                  navName[target.split(' ')[0]] + '/'
-                  + mainState.lotCard.state.marka_name + '/'
-                  + mainState.lotCard.state.eng_v + '/'
-                  + mainState.lotCard.state.model_name
-               :
-                  navName[target],
-            from: match.url,
+         navigate(lotCard ?
+               '/' + navName[target.split(' ')[0]] + '/'
+               + mainState.lotCard.state.marka_name + '/'
+               + mainState.lotCard.state.eng_v + '/'
+               + mainState.lotCard.state.model_name
+            :
+               '/' + navName[target], {
+            state: {
+               from: location.pathname,
+            }
          })
       }
    }
@@ -91,7 +99,7 @@ function NavFilter () {
          <div
             className={
                lotCard ? stl.iconFilter :
-               match.url === navName[prop] ?
+               checkUrl() === navName[prop] ?
                   stl.iconActiveFilter : stl.iconFilter
             }
             key={prop}
@@ -107,7 +115,7 @@ function NavFilter () {
    }
 
    return (
-      <nav className={mobOn ? stl.navOn : stl.nav}>
+      <nav className={navMob ? stl.navOn : stl.nav}>
          {navActive}
       </nav>
    )

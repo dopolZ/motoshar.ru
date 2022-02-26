@@ -20,7 +20,7 @@
 
 .main {
    align-items: center;
-   animation: main .4s;
+   animation: main .5s;
    backdrop-filter: blur(2px) grayscale(1);
    background: rgba(211, 211, 211, .5);
    display: flex;
@@ -33,7 +33,7 @@
 
 .mainClose {
    composes: main;
-   animation: mainClose .4s;
+   animation: mainClose .5s;
    opacity: 0;
 }
 

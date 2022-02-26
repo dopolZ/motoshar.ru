@@ -1,15 +1,16 @@
 import {mainState} from '../../initData'
 import {useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useLocation, useNavigate, useOutlet} from 'react-router-dom'
 import stl from './style.module.css'
 
 function ResultBlock() {
    const [state, setState] = useState(mainState.resultBlock?.state)
    mainState.resultBlock = {state, setState}
    
-   const history = useHistory()
+   const location = useLocation()
+   const navigate = useNavigate()
 
-   const imgOver = e => {
+   const handleMouseOver = e => {
       if (
          e.target.tagName !== 'IMG' ||
          e.target.parentElement.className.includes('Plate')
@@ -19,26 +20,36 @@ function ResultBlock() {
          .replace('image1_small', 'image_cube')
          .replace('.jpg', '_r.jpg')
       
-      history.location.data = url
-      mainState.fastBlock.setState({caption: 'img'})
+      navigate(location.pathname, {
+         replace: true,
+         state: {
+            data: url,
+            fast: 'img',
+            from: location.pathname,
+         }
+      })
    }
 
-   const imgOut = e => {
+   const handleMouseOut = e => {
       if (
          e.target.tagName !== 'IMG' ||
          e.target.parentElement.className.includes('Plate')
       ) return
 
-      mainState.fastBlock.setState({})
+      navigate(location.pathname, {
+         replace: true,
+         state: {
+            from: location.pathname,
+         }
+      })
    }
 
-   const onClick = e => {
+   const handleClick = e => {
       if ( e.target.className.includes('plugOnClick') ) {
          const id = e.target.parentElement.id
 
-         history.push({
-            pathname: `/lot${id}`,
-            from: history.location.pathname,
+         navigate(`/lot${id}`, {
+            from: location.pathname,
          })
       } else if (
          e.target.tagName === 'IMG' &&
@@ -48,17 +59,22 @@ function ResultBlock() {
             .replace('image1_small', 'image_cube')
             .replace('.jpg', '_r.jpg')
          
-            history.location.fast ?
-               history.replace({
-                  data: url,
-                  fast: 'img',
-                  from: history.location.pathname,
+            location.state?.fast ?
+               navigate(location.pathname, {
+                  replace: true,
+                  state: {
+                     data: url,
+                     fast: 'img',
+                     from: location.pathname,
+                  }
                })
             :
-               history.push({
-                  data: url,
-                  fast: 'img',
-                  from: history.location.pathname,
+               navigate(location.pathname, {
+                  state: {
+                     data: url,
+                     fast: 'img',
+                     from: location.pathname,
+                  }
                })
       } else return
    }
@@ -85,9 +101,9 @@ function ResultBlock() {
       <div
          className={mainState.viewResult !== 'plate' ?
             stl.resultList : stl.resultPlate}
-         onClick={onClick}
-         onMouseOver={imgOver}
-         onMouseOut={imgOut}
+         onClick={handleClick}
+         onMouseOver={handleMouseOver}
+         onMouseOut={handleMouseOut}
       >
          {state}
          <div

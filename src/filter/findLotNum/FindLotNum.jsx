@@ -1,9 +1,9 @@
 import './style.css'
-import {useHistory, useRouteMatch} from 'react-router-dom'
+import {useNavigate, useMatch} from 'react-router-dom'
 
 function FindLotNum() {
-   const history = useHistory()
-   const match = useRouteMatch()
+   const history = useNavigate()
+   const match = useMatch()
    
    const onSubmit = e => {
       

@@ -1,7 +1,7 @@
 import Button from '../../../buttons/Button'
 import {mainState} from '../../../initData'
 import stl from './style.module.css'
-import {useHistory, useRouteMatch} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
 const engine = [
@@ -20,8 +20,9 @@ function EngineBlock() {
       str.replace(' ', '').replace(' ', '').replace(' ', '')
       .replace('от', '').replace('до', '').replace('см3', '') : ''
 
-   const history = useHistory()
-   const {url: startUrl} = useRouteMatch()
+   const navigate = useNavigate()
+   const location = useLocation()
+   const startUrl = '/' + location.pathname.split('/')[1]
    const existBrand = mainState.selectBlock.brand
    const existEngine = noBackspace(mainState.selectBlock.engine)
 
@@ -32,24 +33,20 @@ function EngineBlock() {
 
       if (existEngine && existEngine === targetEngine) {
          !existBrand ? 
-            history.push({
-               pathname: startUrl,
+            navigate(startUrl, {
                from: `${startUrl}/${existEngine}`,
             }) :
-            history.push({
-               pathname: `${startUrl}/${existBrand}`,
+            navigate(`${startUrl}/${existBrand}`, {
                from: `${startUrl}/${existBrand}/${existEngine}`,
             })
       } else {
          !existBrand ?
-            history.push({
-               pathname: `${startUrl}/${targetEngine}`,
+            navigate(`${startUrl}/${targetEngine}`, {
                from: existEngine ?
                   `${startUrl}/${existEngine}` :
                   `${startUrl}`,
             }) :
-            history.push({
-               pathname: `${startUrl}/${existBrand}/${targetEngine}`,
+            navigate(`${startUrl}/${existBrand}/${targetEngine}`, {
                from: existEngine ?
                   `${startUrl}/${existBrand}/${existEngine}` :
                   `${startUrl}/${existBrand}`,

@@ -3,43 +3,48 @@ import {useState} from "react"
 import arrowLeft from '../../img/arrowLeft.png'
 import arrowRight from '../../img/arrowRight.png'
 import stl from '../../style.module.css'
-import {useHistory} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 
 function ImgWrapper() {
-   const [state, setState] = useState({})
+   const [state, setState] = useState()
    mainState.imgWrapper = {state, setState}
 
-   const history = useHistory()
+   const location = useLocation()
+   const navigate = useNavigate()
 
-   const onClick = () => history.goBack()
+   const handleClick = () => navigate(location.pathname, {
+         replace: true,
+         state: {
+            from: location.pathname,
+         }
+      })
 
-   const onOut = () => {
-      if (!mainState.lotCard?.state) {
-         history.goBack()
-      }
-   }
+   const handleMouseOut = () => navigate(location.pathname, {
+         replace: true,
+         state: {
+            from: location.pathname,
+         }
+      })
    
-   const scrollClick = e => {
+   const handleScroll = e => {
       const i =
-         mainState.lotCard.srcImgsWork.indexOf(history.location.data)
+         mainState.lotCard.srcImgsWork.indexOf(navigate.location.data)
    
       if (document.documentElement.scrollWidth / 2 < e.clientX) {
          if (mainState.lotCard.srcImgsWork.length - 1 !== i) {
-            history.location.data = mainState.lotCard.srcImgsWork[i + 1]
-            setState({})            
+            setState(mainState.lotCard.srcImgsWork[i + 1])            
          } else {
-            history.location.data = mainState.lotCard.srcImgsWork[0]
-            setState({})
+            setState(mainState.lotCard.srcImgsWork[0])
          }
       } else {
-         if (i === 0) {            
-            history.location.data =
-               mainState.lotCard
-               .srcImgsWork[mainState.lotCard.srcImgsWork.length - 1]
-            setState({})
-         } else {            
-            history.location.data = mainState.lotCard.srcImgsWork[i - 1]
-            setState({})
+         if (i === 0) {
+            setState(
+               mainState.lotCard.srcImgsWork[
+                  mainState.lotCard.srcImgsWork.length - 1
+               ]
+            )
+         } else {
+            setState(mainState.lotCard.srcImgsWork[i - 1])
          }
       }
    }
@@ -57,23 +62,23 @@ function ImgWrapper() {
             className={mainState.lotCard?.state ?
                stl.scrllLeft : stl.scrlNo
             }
-            onClick={scrollClick}
+            onClick={handleScroll}
          >
             <img src={arrowLeft} alt='arrowLeft' />
          </div>
          <img
             alt='img'
             className={stl.img}
-            src={history.location.data}
-            onClick={onClick}
+            src={location.state?.data}
+            onClick={handleClick}
+            onMouseOut={handleMouseOut}
             onLoad={e => e.target.style.opacity = 1}
-            onMouseOut={onOut}
          />
          <div
             className={mainState.lotCard?.state ?
                stl.scrlRight : stl.scrlNo
             }
-            onClick={scrollClick}
+            onClick={handleScroll}
          >
             <img src={arrowRight} alt='arrowRight' />
          </div>

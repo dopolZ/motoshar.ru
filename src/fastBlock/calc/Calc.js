@@ -6,18 +6,18 @@ import CloseButton from '../../closeButton/CloseButton'
 import createState from './createState'
 import CheckMobile from '../../CheckMobile'
 import './style.css'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function Calc() {
    const [state, setState] = useState( createState() )
    mainState.calc = {state, setState}
 
-   const history = useHistory()
+   const navigate = useNavigate()
 
    const onClickClose = () => {
       mainState.calcPlug.setState('off')
       
-      setTimeout(() => history.goBack(), 600)
+      setTimeout(() => navigate(-1), 600)
    }
 
    return (

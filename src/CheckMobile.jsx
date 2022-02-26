@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
 import {mainState} from './initData'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function CheckMobile(props) {
-   const history = useHistory()
+   const navigate = useNavigate()
    const [state, setState] = useState( mainState.mobile('side') )
    mainState.checkMobile = {state, setState}
 
@@ -14,7 +14,7 @@ function CheckMobile(props) {
          setState(false)
       }
 
-      history.location.mobMenu = false
+      navigate.location.mobMenu = false
       
       mainState.header.setMenuMobSpan(false)
       mainState.nav.setMobOn(false)

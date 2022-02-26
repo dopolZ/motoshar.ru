@@ -1,7 +1,7 @@
 import Button from '../../../buttons/Button'
 import {mainState} from '../../../initData'
 import stl from './style.module.css'
-import {useHistory, useRouteMatch} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
 const brandsPattern = [
@@ -30,8 +30,9 @@ function BrandBlock() {
       str.replace(' ', '').replace('прочие', 'other')
          .replace('HD', 'harley-davidson') : ''
 
-   const history = useHistory()
-   const {url: startUrl} = useRouteMatch()   
+   const navigate = useNavigate()
+   const location = useLocation()
+   const startUrl = '/' + location.pathname.split('/')[1]
    const existEngine = mainState.selectBlock.engine
    const existBrand = noBackspace(mainState.selectBlock.brand)
 
@@ -42,24 +43,24 @@ function BrandBlock() {
 
       if (existBrand && existBrand === targetBrand) {
          !existEngine ?
-            history.push({
-               pathname: startUrl,
-               from: `${startUrl}/${existBrand}`,
+            navigate(startUrl, {
+               state: {
+                  from: `${startUrl}/${existBrand}`,
+               }
             }) : 
-            history.push({
-               pathname: `${startUrl}/${existEngine}`,
-               from: `${startUrl}/${existBrand}/${existEngine}`,
+            navigate(`${startUrl}/${existEngine}`, {
+               state: {
+                  from: `${startUrl}/${existBrand}/${existEngine}`,
+               }
             })
       } else {  
          !existEngine ?
-            history.push({
-               pathname: `${startUrl}/${targetBrand}`,
+            navigate(`${startUrl}/${targetBrand}`, {
                from: existBrand ?
                   `${startUrl}/${existBrand}` :
                   `${startUrl}`,
             }) :
-            history.push({
-               pathname: `${startUrl}/${targetBrand}/${existEngine}`,
+            navigate(`${startUrl}/${targetBrand}/${existEngine}`, {
                from: existBrand ?
                   `${startUrl}/${existBrand}/${existEngine}` :
                   `${startUrl}/${existEngine}`,

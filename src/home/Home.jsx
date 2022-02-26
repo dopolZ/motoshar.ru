@@ -12,18 +12,19 @@ import imgContacts from './img/contacts.webp'
 import Footer from '../footer/Footer'
 import {mainState} from '../initData'
 import stl from './style.module.css'
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
 import CheckMobile from '../CheckMobile'
 
-function Home(props) {
-   useEffect(() => {
-      mainState.fastBlock.setState({
-         caption: props.location.fast,
-      })
+function Home() {
+   const navigate = useNavigate()
+   const location = useLocation()
 
-      mainState.header.setMenuMobSpan(props.location.mobMenu)
-      mainState.nav.setMobOn(props.location.mobMenu)
+   useEffect(() => {
+      mainState.fastBlock.setState(location.state?.fast)
+
+      mainState.header.setMenuMob(location.state?.navMob)
+      mainState.nav.setNavMob(location.state?.navMob)
 
       const list = () => {
          const section = document.querySelectorAll('section')
@@ -52,12 +53,12 @@ function Home(props) {
       }
    })
 
-   const onClick = e => {
-      props.history.push({
+   const onClick = e => navigate('/', {
+      state: {
          fast: e.target.textContent,
-         from: props.location.pathname,
-      })
-   }
+         from: location.pathname,
+      }
+   })
 
    return (
       <>
@@ -77,8 +78,8 @@ function Home(props) {
                   <Link
                      className={stl.link}
                      to={{
-                        pathname: '/stat',
-                        from: 'home',
+                        pathname: 'stat',
+                        from: location.pathname,
                      }}
                   >
                      <Button
@@ -103,8 +104,8 @@ function Home(props) {
                   <Link
                      className={stl.link}
                      to={{
-                        pathname: '/online',
-                        from: 'home',
+                        pathname: 'online',
+                        from: location.pathname,
                      }}
                   >
                      <Button

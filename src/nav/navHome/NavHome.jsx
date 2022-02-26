@@ -1,13 +1,13 @@
 import {mainState} from '../../initData'
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import stl from '../style.module.css'
 
 function NavHome() {
-   const history = useHistory()
+   const navigate = useNavigate()
    const [state, setState] = useState(0)
-   const [mobOn, setMobOn] = useState(false)
-   mainState.nav = {state, mobOn, setState, setMobOn}
+   const [navMob, setNavMob] = useState(false)
+   mainState.nav = {state, navMob, setState, setNavMob}
 
    const onClick = e => {
       const headerPadding = document.documentElement.offsetWidth / 100
@@ -25,7 +25,7 @@ function NavHome() {
 
       window.scrollTo({top: coord, behavior: 'smooth'})
 
-      history.push('/')
+      navigate('/', {replace: true})
    }
 
    const navActive = []
@@ -62,8 +62,7 @@ function NavHome() {
    }
 
    return (
-      // <nav className={history.location.mobMenu ? stl.navOn : stl.nav}>
-      <nav className={mobOn ? stl.navOn : stl.nav}>
+      <nav className={navMob ? stl.navMob : stl.nav}>
          {navActive}
       </nav>
    )

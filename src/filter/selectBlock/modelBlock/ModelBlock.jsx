@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {mainState} from '../../../initData'
 import './style.css'
-import {useRouteMatch, useHistory} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {renderLotList} from '../../renderLotList'
 import {renderLotPlate} from '../../renderLotPlate'
 
@@ -11,8 +11,9 @@ function ModelBlock() {
    )
    mainState.modelBlock = {state, setState}
 
-   const match = useRouteMatch()
-   const history = useHistory()
+   const location = useLocation()
+   const startUrl = '/' + location.pathname.split('/')[1]
+   const navigate = useNavigate()
 
    const onClick = e => {      
       if (e.target.id === 'modelBlock' || e.target.id === 'notFound') return
@@ -20,7 +21,7 @@ function ModelBlock() {
       const {model: modelSelect} = mainState.selectBlock
       let modelList
       
-      if (match.url === '/online') {
+      if (startUrl === '/online') {
          modelList = mainState.cache.modelsFilter
          const lotsFilter = mainState.cache.lotsFilter
 
@@ -107,15 +108,14 @@ function ModelBlock() {
       setState(resModelJsx)
 
       const newPathname = Object.keys(modelSelect).length ?
-         match.url + '/' + mainState.selectBlock.brand + '/' +
+         startUrl + '/' + mainState.selectBlock.brand + '/' +
             mainState.selectBlock.engine + '/' +
             Object.keys(modelSelect).join('<>') :
-            match.url + '/' + mainState.selectBlock.brand + '/' +
+            startUrl + '/' + mainState.selectBlock.brand + '/' +
             mainState.selectBlock.engine
 
-      history.push({
-         pathname: newPathname,
-         from:  match.url + '/' + mainState.selectBlock.brand + '/' +
+      navigate(newPathname, {
+         from: startUrl + '/' + mainState.selectBlock.brand + '/' +
             mainState.selectBlock.engine,
       })
    }

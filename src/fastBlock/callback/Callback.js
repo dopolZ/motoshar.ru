@@ -1,7 +1,7 @@
 import {mainState} from '../../initData'
 import stl from './style.module.css'
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import CloseButton from '../../closeButton/CloseButton'
 
 function Callback() {
@@ -13,7 +13,7 @@ function Callback() {
    })
    mainState.callback = {state, setState, data, setData}
 
-   const history = useHistory()
+   const navigate = useNavigate()
 
    function Answer() {
       const [state, setState] = useState()
@@ -47,7 +47,7 @@ function Callback() {
          body: JSON.stringify({
             name: data.name,
             phone: data.phone,
-            from: history.location.pathname,
+            from: window.location.origin,
          })
       })
       .then(res => {
@@ -65,7 +65,7 @@ function Callback() {
    const onClickClose = () => {
       setState('off')
 
-      setTimeout(() => history.goBack(), 600)
+      setTimeout(() => navigate(-1), 600)
    }
 
    const onClickSubmit = () => {
@@ -82,7 +82,7 @@ function Callback() {
 
          setTimeout( () => mainState.callbackAnswer.setState({}) )
 
-         setTimeout(() => history.goBack(), 3000)
+         setTimeout(() => navigate(-1), 3000)
       }
    }
 

@@ -1,16 +1,17 @@
 import stl from './style.module.css'
 import {mainState} from '../initData'
-import {useHistory} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import Preloader from '../Preloader'
 
 function Header() {
-   const history = useHistory()
+   const location = useLocation()
+   const navigate = useNavigate()
 
-   const [menuMobSpan, setMenuMobSpan] = useState(false)
-   mainState.header = {menuMobSpan, setMenuMobSpan}
+   const [menuMob, setMenuMob] = useState(false)
+   mainState.header = {menuMob, setMenuMob}
 
-   const SpanMob = props => {
+   const MenuMobSpan = props => {
       
       return (
          <>
@@ -24,9 +25,9 @@ function Header() {
       )
    }
 
-   const onClick = () => {
-      setMenuMobSpan()
-      mainState.nav.setMobOn()
+   const handleClickLogo = () => {
+      setMenuMob()
+      mainState.nav.setNavMob()
       mainState.preloader.setState()
       mainState.resultBlock = {}
       mainState.cache = {
@@ -41,19 +42,21 @@ function Header() {
 
       window.scrollTo({top: 0, behavior: 'smooth'})
 
-      history.push('/')
+      navigate('/')
    }
 
-   const onClickMob = () => {
+   const handleClickMenu = () => {
       if ( !mainState.mobile('side') ) return
       
-      if (!menuMobSpan) {
-         history.push({
-            mobMenu: !menuMobSpan,
-            from: history.location.pathname,
+      if (!menuMob) {
+         navigate(location.pathname, {
+            state: {
+               navMob: !menuMob,
+               from: location.pathname,
+            }
          })
       } else {
-         history.goBack()
+         navigate(-1)
       }
    }
 
@@ -61,7 +64,7 @@ function Header() {
       <header className={stl.header}>
          <div
             className={stl.logoDiv}
-            onClick={onClick}
+            onClick={handleClickLogo}
          >  
             <Preloader />
             <div className={stl.text}>
@@ -71,10 +74,10 @@ function Header() {
          </div>
          <div
             className={stl.address}
-            onClick={onClickMob}
+            onClick={handleClickMenu}
          >
             <p className={stl.addressP}>{mainState.mainData.address}</p>
-            <SpanMob on={menuMobSpan} />
+            <MenuMobSpan on={menuMob} />
          </div>
          <div className={stl.phone}>
             <p>{mainState.mainData.cellphone}</p>
