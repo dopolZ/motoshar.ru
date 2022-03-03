@@ -35,7 +35,7 @@ function LotPage() {
       empty: <LotCardEmpty lot={lot} />,    
    }
 
-   const onClickClose = () => {
+   const handleClickClose = () => {
       if (!mainState.selectBlock.brand) {
          const lot = mainState.lotCard.state
          let date = lot.auction_date.slice(0, 10)
@@ -75,15 +75,15 @@ function LotPage() {
    useEffect(() => {
       mainState.fastBlock.setState(location.state?.fast)
 
-      mainState.header.setMenuMob(location.mobMenu)
-      mainState.nav.setNavMob(location.mobMenu)
+      mainState.header.setMenuMob(location.state?.navMob)
+      mainState.nav.setNavMob(location.state?.navMob)
    })
 
    return (
       <>
          <CloseButton
             className='lot'
-            onClick={onClickClose}
+            onClick={handleClickClose}
          />
          {choiceLotCard[mainState.imgValidCheck(date)]}
          <NavFilter />

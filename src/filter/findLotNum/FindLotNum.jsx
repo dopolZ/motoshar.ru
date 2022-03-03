@@ -1,16 +1,21 @@
 import './style.css'
-import {useNavigate, useMatch} from 'react-router-dom'
+import { mainState } from '../../initData'
+import {useLocation, useNavigate} from 'react-router-dom'
 
 function FindLotNum() {
-   const history = useNavigate()
-   const match = useMatch()
+   const location = useLocation()
+   const startUrl = '/' + location.pathname.split('/')[1]
+   const navigate = useNavigate()
    
-   const onSubmit = e => {
+   const handleSubmit = e => {
       
-      if (+e.target[0].value) {      
-         history.push({
-            pathname: `${match.url}/find${e.target[0].value}`,
-            from: history.location.pathname,
+      if (+e.target[0].value) {
+         mainState.lastFindLotNum = +e.target[0].value
+
+         navigate(`${startUrl}/find${e.target[0].value}`, {
+            state: {
+               from: location.pathname,
+            }
          })
       }
       
@@ -21,11 +26,11 @@ function FindLotNum() {
    return (
       <div id='findLotNum'>
          <p>поиск по номеру лота</p>
-         <form onSubmit={onSubmit}>
+         <form onSubmit={handleSubmit}>
             <input
                max='9999'
                maxLength='4'
-               onKeyPress={e => e.key === 'Enter' ? onSubmit : null}
+               onKeyPress={e => e.key === 'Enter' ? handleSubmit : null}
                type='tel'
             /> 
             <input type='submit' value='найти'></input>

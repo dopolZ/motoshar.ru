@@ -3,8 +3,11 @@ import {costBlock} from '../../filter/costBlock'
 import {useState, useEffect} from 'react'
 import './style.css'
 import CheckMobile from '../../CheckMobile'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function LotCardFull(props) {
+   const location = useLocation()
+   const navigate = useNavigate()
    const [state, setState] = useState(props.lot)
    mainState.lotCard = {state, setState}
 
@@ -108,7 +111,7 @@ export default function LotCardFull(props) {
       },
    }
 
-   const onClickImg = e => {
+   const handleClickImg = e => {
       if (e.target.tagName !== 'IMG') return
 
       let url = e.target.src
@@ -122,10 +125,12 @@ export default function LotCardFull(props) {
       //    url = url.replace('image_parts', 'image_parts_high')
       // }
 
-      props.history.push({
-         data: url,
-         fast: 'img',
-         from: props.history.location.pathname,
+      navigate(location.pathname, {
+         state: {
+            data: url,
+            fast: 'img',
+            from: location.pathname,
+         }
       })         
    }
 
@@ -156,7 +161,7 @@ export default function LotCardFull(props) {
                <img
                   alt='img'
                   src={elem}
-                  onClick={onClickImg}
+                  onClick={handleClickImg}
                   onLoad={e => onLoadImg(e, elem)}
                   onError={e => onErrorImg(e)}
                />
@@ -177,7 +182,7 @@ export default function LotCardFull(props) {
                            'objectRecycle' : ''
                      }
                   src={elem}
-                  onClick={onClickImg}
+                  onClick={handleClickImg}
                   onLoad={e => onLoadImg(e, elem)}
                   onError={e => onErrorImg(e)}
                />
@@ -227,7 +232,7 @@ export default function LotCardFull(props) {
                      alt='img'
                      className='objectRecycle'
                      src={elem}
-                     onClick={onClickImg}
+                     onClick={handleClickImg}
                      onLoad={e => onLoadImg(e, elem)}
                      onError={e => onErrorImg(e)}
                   />
@@ -367,7 +372,7 @@ export default function LotCardFull(props) {
                   <img
                      alt='img'
                      src={url}
-                     onClick={onClickImg}
+                     onClick={handleClickImg}
                      onLoad={e => onLoadImg(e, url)}
                      onError={e => onErrorImg(e)}
                   />

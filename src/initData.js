@@ -57,8 +57,8 @@ export function InitData(obj) {
 
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
-   this.courseJpy = .71
-   this.courseUsd = 79
+   this.courseJpy = 1.2
+   this.courseUsd = 150
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'
    this.front = front
@@ -144,7 +144,7 @@ export const mainState = {
       lotsFilterJsx: '',
       modelsFilter: '',
       modelsFilterJsx: '',
-      resultFindLotNum: {},
+      lastFindLotNum: '',
    },
 
    mainData: new InitData({front: 'home'}),

@@ -6,45 +6,40 @@ import stl from '../../style.module.css'
 import {useLocation, useNavigate} from 'react-router-dom'
 
 function ImgWrapper() {
+   const location = useLocation()
+   const navigate = useNavigate()
    const [state, setState] = useState()
    mainState.imgWrapper = {state, setState}
 
-   const location = useLocation()
-   const navigate = useNavigate()
+   const handleClick = () => navigate(-1)
 
-   const handleClick = () => navigate(location.pathname, {
-         replace: true,
-         state: {
-            from: location.pathname,
-         }
-      })
-
-   const handleMouseOut = () => navigate(location.pathname, {
-         replace: true,
-         state: {
-            from: location.pathname,
-         }
-      })
+   const handleMouseOut = () => {
+      if (!location.pathname.includes('lot')) {
+         navigate(-1)
+      }
+   }
    
    const handleScroll = e => {
       const i =
-         mainState.lotCard.srcImgsWork.indexOf(navigate.location.data)
-   
+         mainState.lotCard.srcImgsWork.indexOf(location.state?.data)
+  
       if (document.documentElement.scrollWidth / 2 < e.clientX) {
          if (mainState.lotCard.srcImgsWork.length - 1 !== i) {
-            setState(mainState.lotCard.srcImgsWork[i + 1])            
+            location.state.data = mainState.lotCard.srcImgsWork[i + 1]         
+            setState({})            
          } else {
-            setState(mainState.lotCard.srcImgsWork[0])
+            location.state.data = mainState.lotCard.srcImgsWork[0]
+            setState({})
          }
       } else {
          if (i === 0) {
-            setState(
-               mainState.lotCard.srcImgsWork[
-                  mainState.lotCard.srcImgsWork.length - 1
-               ]
-            )
+            location.state.data = mainState.lotCard.srcImgsWork[
+               mainState.lotCard.srcImgsWork.length - 1
+            ]
+            setState({})
          } else {
-            setState(mainState.lotCard.srcImgsWork[i - 1])
+            location.state.data = mainState.lotCard.srcImgsWork[i - 1]
+            setState({})
          }
       }
    }

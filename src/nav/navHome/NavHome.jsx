@@ -9,7 +9,7 @@ function NavHome() {
    const [navMob, setNavMob] = useState(false)
    mainState.nav = {state, navMob, setState, setNavMob}
 
-   const onClick = e => {
+   const handleClick = e => {
       const headerPadding = document.documentElement.offsetWidth / 100
          * (mainState.mobile('side') ? 20 : 6)
 
@@ -49,7 +49,7 @@ function NavHome() {
                i === state ? stl.iconActive : stl.icon
             }
             data-key={i}
-            onClick={onClick}
+            onClick={handleClick}
             key={i}
          >
             <img

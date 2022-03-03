@@ -67,11 +67,14 @@ function Filter() {
       location.pathname === location.from
    ) {
       mainState.needFetchModelBlock = false            
-   } else if ( pathname[2]?.includes('find') ) {
+   } else if (
+      pathname[2]?.includes('find') &&
+      mainState.cache.lotsFilter[0]?.lot_num !==
+      mainState.lastFindLotNum
+   ) {
       fetchFindLotNum(pathname[2].slice(4))
 
       mainState.selectBlock = newSelect
-
       mainState.needFetchModelBlock = false
    } else if (
       newSelect.brand !== mainState.selectBlock.brand ||
@@ -101,7 +104,7 @@ function Filter() {
       mainState.nav.setNavMob(location.state?.navMob)
 
       if (
-         location.pathname === location.from
+         location.pathname === location.state?.from
       ) {
          mainState.needFetchModelBlock = false
       } else if (mainState.needFetchModelBlock) {
@@ -116,7 +119,11 @@ function Filter() {
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)
          mainState.resultBlock.setState()
-      } else if ( pathname[2]?.includes('find') ) {
+      } else if (
+         pathname[2]?.includes('find') &&
+         mainState.cache.lotsFilter[0]?.lot_num !==
+         mainState.lastFindLotNum
+      ) {
          mainState.modelBlock.setState()
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)
@@ -128,7 +135,7 @@ function Filter() {
       <>
          <Heading front={url} /> 
          <NavFilter />
-         {/* <FindLotNum /> */}
+         <FindLotNum />
          <SelectBlock />
          <FilterBlock />
          <InfoBlock />

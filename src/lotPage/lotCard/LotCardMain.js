@@ -3,8 +3,11 @@ import {costBlock} from '../../filter/costBlock'
 import {useState, useEffect} from 'react'
 import './style.css'
 import CheckMobile from '../../CheckMobile'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function LotCardMain(props) {
+   const location = useLocation()
+   const navigate = useNavigate()
    const [state, setState] = useState(props.lot)
    mainState.lotCard = {state, setState}
 
@@ -118,10 +121,12 @@ export default function LotCardMain(props) {
       //    url = url.replace('image_parts', 'image_parts_high')
       // }
          
-      props.history.push({
-         data: url,
-         fast: 'img',
-         from: props.history.location.pathname,
+      navigate(location.pathname, {
+         state: {
+            data: url,
+            fast: 'img',
+            from: location.pathname,
+         }
       })
    }
 

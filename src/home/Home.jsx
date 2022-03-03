@@ -53,7 +53,7 @@ function Home() {
       }
    })
 
-   const onClick = e => navigate('/', {
+   const handleClick = e => navigate('/', {
       state: {
          fast: e.target.textContent,
          from: location.pathname,
@@ -90,7 +90,7 @@ function Home() {
                   <Button
                      class='home'
                      name='заявка'
-                     onclick={onClick}
+                     onclick={handleClick}
                   />
                </div>
             </div>
@@ -116,7 +116,7 @@ function Home() {
                   <Button
                      class='home'
                      name='заявка'
-                     onclick={onClick}
+                     onclick={handleClick}
                   />
                </div>
             </div>
@@ -129,7 +129,7 @@ function Home() {
                   <Button
                      class='home'
                      name='калькулятор'
-                     onclick={onClick}
+                     onclick={handleClick}
                   />
                </div>
             </div>

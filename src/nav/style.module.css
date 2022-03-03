@@ -94,12 +94,12 @@
       z-index: 11;
    }
    
-   .navOn {
+   .navMob {
       composes: nav;
       right: 0;
    }
 
-   .navOn::before {
+   .navMob::before {
       background: linear-gradient(225deg, var(--mainBgColor) 20vw, white 85%);
       bottom: 0;
       content: '';

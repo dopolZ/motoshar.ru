@@ -1,10 +1,12 @@
 import {mainState} from '../../initData'
 import stl from './style.module.css'
 import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import CloseButton from '../../closeButton/CloseButton'
 
 function Callback() {
+   const location = useLocation()
+   const navigate = useNavigate()
    const [state, setState] = useState()
    const [data, setData] = useState({
       name: '',
@@ -12,8 +14,6 @@ function Callback() {
       personal: false,
    })
    mainState.callback = {state, setState, data, setData}
-
-   const navigate = useNavigate()
 
    function Answer() {
       const [state, setState] = useState()
@@ -62,13 +62,13 @@ function Callback() {
       })
    }
 
-   const onClickClose = () => {
+   const handleClickClose = () => {
       setState('off')
 
       setTimeout(() => navigate(-1), 600)
    }
 
-   const onClickSubmit = () => {
+   const handleClickSubmit = () => {
       if (!data.name || !data.phone || !data.personal) {                      
          mainState.callbackAnswer.setState({})
 
@@ -81,8 +81,7 @@ function Callback() {
          setState('offSend')
 
          setTimeout( () => mainState.callbackAnswer.setState({}) )
-
-         setTimeout(() => navigate(-1), 3000)
+         setTimeout(() => navigate(location.pathname), 3000)
       }
    }
 
@@ -95,7 +94,7 @@ function Callback() {
          <div className={stl.main}>
             <CloseButton
                className='callback'
-               onClick={onClickClose}
+               onClick={handleClickClose}
             />
             <Answer />
             {
@@ -149,7 +148,7 @@ function Callback() {
                </div>            
                <input
                   className={stl.submit}
-                  onClick={onClickSubmit}
+                  onClick={handleClickSubmit}
                   type='button'
                   value='отправить'
                />

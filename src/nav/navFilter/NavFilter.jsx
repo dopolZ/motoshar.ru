@@ -14,63 +14,51 @@ function NavFilter () {
    const lotCard = location.pathname.includes('lot')
 
    const navName = {
-      заявка: '',
-      статистика: 'stat',
-      торги: 'online',
-      калькулятор: 'calc',
+      заявка: location.pathname,
+      статистика: '/stat',
+      торги: '/online',
+      калькулятор: location.pathname,
    }
 
-   const checkUrl = () => location.pathname.split('/')[1]
+   const getStartUrl = () => location.pathname.split('/')[1]
 
-   const onClick = e => {
+   const handleClick = e => {
       const target = e.target.localName === 'img' ?
          e.target.nextSibling.textContent :
          e.target.textContent
-         
-      if (
-         target === 'заявка' ||
-         target === 'заказать' ||
-         target === 'калькулятор'
-      ) {   
-         location.state?.fast ?
-            navigate(location.pathname, {
-               replace: true,
-               state: {
-                  fast: target,
-                  from: location.pathname,
-               }
-            })
-         :
-            navigate(location.pathname, {
-               state: {
-                  fast: target,
-                  from: location.pathname,
-               }
-            })
-      } else if (checkUrl() === navName[target] && !lotCard) {      
-         if (location.state?.fast) {
-            navigate(-1)
-         } else return 
-      } else if (
-         mainState.filterBlock?.state.front ===
-         navName[target.split(' ')[0]]
-      ) {
-         mainState.fastBlock.state ?
-            navigate(-2) : navigate(-1)
-      } else {
+
+      const fastVisible =
+         (mainState.fastBlock.state && true) || mainState.mobile('side')
+
+      if (lotCard && target.includes('статистика') ) {
          mainState.modelBlock = {}
          mainState.filterBlock = {}
          mainState.infoBlock = {}
          mainState.resultBlock = {}
 
-         navigate(lotCard ?
-               '/' + navName[target.split(' ')[0]] + '/'
-               + mainState.lotCard.state.marka_name + '/'
-               + mainState.lotCard.state.eng_v + '/'
-               + mainState.lotCard.state.model_name
-            :
-               '/' + navName[target], {
+         navigate(
+            '/stat/'
+            + mainState.lotCard.state.marka_name + '/'
+            + mainState.lotCard.state.eng_v + '/'
+            + mainState.lotCard.state.model_name, {
+            replace: fastVisible,
             state: {
+               from: location.pathname,
+            }
+         })
+      } else if (target === 'заказать') {
+         navigate(location.pathname, {
+            replace: fastVisible,
+            state: {
+               fast: target,
+               from: location.pathname,
+            }
+         })
+      } else {
+         navigate(navName[target], {
+            replace: fastVisible,
+            state: {
+               fast: target,
                from: location.pathname,
             }
          })
@@ -99,11 +87,11 @@ function NavFilter () {
          <div
             className={
                lotCard ? stl.iconFilter :
-               checkUrl() === navName[prop] ?
+               getStartUrl() === navName[prop] ?
                   stl.iconActiveFilter : stl.iconFilter
             }
             key={prop}
-            onClick={onClick}
+            onClick={handleClick}
          >
             <img
                alt="icon"
@@ -115,7 +103,7 @@ function NavFilter () {
    }
 
    return (
-      <nav className={navMob ? stl.navOn : stl.nav}>
+      <nav className={navMob ? stl.navMob : stl.nav}>
          {navActive}
       </nav>
    )

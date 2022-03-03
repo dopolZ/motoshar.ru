@@ -42,7 +42,9 @@ function Header() {
 
       window.scrollTo({top: 0, behavior: 'smooth'})
 
-      navigate('/')
+      navigate('/', {
+         replace: location.pathname === '/' ? true : false
+      })
    }
 
    const handleClickMenu = () => {
@@ -56,7 +58,7 @@ function Header() {
             }
          })
       } else {
-         navigate(-1)
+         navigate(location.pathname)
       }
    }
 

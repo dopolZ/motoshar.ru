@@ -6,15 +6,14 @@ import CloseButton from '../../closeButton/CloseButton'
 import createState from './createState'
 import CheckMobile from '../../CheckMobile'
 import './style.css'
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 
 function Calc() {
+   const navigate = useNavigate()
    const [state, setState] = useState( createState() )
    mainState.calc = {state, setState}
 
-   const navigate = useNavigate()
-
-   const onClickClose = () => {
+   const handleClickClose = () => {
       mainState.calcPlug.setState('off')
       
       setTimeout(() => navigate(-1), 600)
@@ -24,7 +23,7 @@ function Calc() {
       <>
          <CloseButton
             className='calc'
-            onClick={onClickClose}
+            onClick={handleClickClose}
          />
          <div id='h1AndH2BeginCalc'>
             <CheckMobile calc={{caption: 'heading'}} />
