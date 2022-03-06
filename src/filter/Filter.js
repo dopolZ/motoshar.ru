@@ -87,7 +87,8 @@ function Filter() {
       fetchModelBlock()
    } else if (
       url === 'stat' && pathname[4]
-      && location.pathname !== location.state?.from
+      && (location.pathname !== (location.state?.from ?
+         location.state.from : mainState.from))      
    ) {
       mainState.needFetchModelBlock = false
 
@@ -114,7 +115,7 @@ function Filter() {
          mainState.resultBlock.setState()
       } else if (
          url === 'stat' && pathname[4]
-         && location.pathname !== location.state?.from
+         && location.pathname !== mainState.from
       ) {
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)

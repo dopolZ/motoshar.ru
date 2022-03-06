@@ -36,8 +36,6 @@ function ResultBlock() {
          e.target.parentElement.className.includes('Plate')
       ) return
 
-      console.log(location.pathname)
-
       navigate(location.pathname, {
          replace: true,
          state: {

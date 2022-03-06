@@ -64,6 +64,8 @@ function Callback() {
 
    const handleClickClose = () => {
       setState('off')
+      
+      mainState.from = location.pathname
 
       setTimeout(() => navigate(-1), 600)
    }

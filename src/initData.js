@@ -54,33 +54,34 @@ function CustomsTable(usd) {
 
 export function InitData(obj) {
    const {front} = obj
-
+   
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
-   this.courseJpy = 1.2
-   this.courseUsd = 150
+   this.courseJpy = 1.1
+   this.courseUsd = 130
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'
    this.front = front
    this.minBidLotJpy = 50000
 
-   this.taxBigPowerRub = 491
+   this.round = num => Math.ceil(num / 1000) * 1000
+   
+   this.taxBigPowerRub = 511
    this.taxBrokerRub = 7000
    this.taxDealerJpy = 50000
-   this.taxFreightUsd = 200
+   this.taxFreightUsd = 300
    this.taxSbktsRub = 15000
    this.taxServiceRub = 30000
    this.taxSvhRub = 7000
    this.taxSwiftJpy = 10000
 
-   this.taxDealerRub = this.taxDealerJpy * this.courseJpy
-   this.taxFreightRub = this.taxFreightUsd * this.courseUsd
-   this.taxSwiftRub = this.taxSwiftJpy * this.courseJpy
-   this.taxAllServicesRub = this.taxDealerRub + this.taxSwiftRub +
+   this.taxDealerRub = Math.floor(this.taxDealerJpy * this.courseJpy)
+   this.taxFreightRub = Math.floor(this.taxFreightUsd * this.courseUsd)
+   this.taxSwiftRub = Math.floor(this.taxSwiftJpy * this.courseJpy)
+   this.taxAllServicesRub =
+      this.taxDealerRub + this.taxSwiftRub +
       this.taxFreightRub + this.taxSvhRub + this.taxSbktsRub +
       this.taxBrokerRub + this.taxServiceRub
-
-   this.round = num => Math.ceil(num / 1000) * 1000
 
    this.calcJpyToRub = obj => {
       const {brand, eng_v, year, start,
@@ -175,11 +176,6 @@ export const mainState = {
       const url = 'https://bdsc.jupiter.ac/auctiondata/bds/disp/bds/'
       + id.slice(0, 8) + '/image1_small/' + id.slice(-4)
       + id.slice(0, 8) + '.jpg'
-      // 20210414/image1_small/001820210414.jpg'
-      // 202104140018
-
-      // console.log('- call changeImgUrl')
-      // console.log('-- url: ', url)
 
       return url
    },

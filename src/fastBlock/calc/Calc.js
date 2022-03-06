@@ -9,12 +9,15 @@ import './style.css'
 import {useLocation, useNavigate} from 'react-router-dom'
 
 function Calc() {
+   const location = useLocation()
    const navigate = useNavigate()
    const [state, setState] = useState( createState() )
    mainState.calc = {state, setState}
 
    const handleClickClose = () => {
       mainState.calcPlug.setState('off')
+
+      mainState.from = location.pathname
       
       setTimeout(() => navigate(-1), 600)
    }
