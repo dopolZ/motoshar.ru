@@ -20,9 +20,9 @@ export function fetchDateAuction() {
                month: 'short',
                day: 'numeric',
             })
-            ? 
+         ? 
             'сегодня'
-            :
+         :
             new Date( Date.parse(res[1]['auction_date']) )
                .toLocaleString('en-GB', {
                   year: 'numeric',

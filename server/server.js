@@ -89,7 +89,7 @@ server.use('/server/DateAuction', (req, res) => {
    req.body.sqlForAPIOptions =
          sData.sqlStart
          + '"select%20distinct%20auction_date%20from%20bike%20'
-         + 'order%20by%20auction_date%20desc%20limit%202"'
+         + 'order%20by%20auction_date%20desc%20limit%205"'
          + sData.sqlEnd
 
    req.body.callAPIOptions.path =

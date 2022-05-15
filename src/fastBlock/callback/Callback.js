@@ -47,7 +47,7 @@ function Callback() {
          body: JSON.stringify({
             name: data.name,
             phone: data.phone,
-            from: window.location.origin,
+            from: window.location.href
          })
       })
       .then(res => {

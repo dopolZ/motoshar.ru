@@ -169,7 +169,7 @@
    opacity: 0;
    outline: 5px solid white;
    outline-offset: -4px;
-   transition: opacity 1s linear;
+   transition: opacity .7s linear;
 }
 
 .lcdMainImgs div[data-video1],
@@ -183,7 +183,7 @@
    cursor: initial;
    height: 10vw;
    opacity: 0;
-   transition: opacity 1s linear;
+   transition: opacity .7s linear;
    width: 96%;
 }
 
@@ -260,7 +260,7 @@
    opacity: 0;
    outline: 3px solid white;
    outline-offset: -2px;
-   transition: opacity 1s linear;
+   transition: opacity .7s linear;
 }
 
 @media (orientation: portrait) {

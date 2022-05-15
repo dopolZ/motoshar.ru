@@ -57,8 +57,8 @@ export function InitData(obj) {
    
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
-   this.courseJpy = 1.1
-   this.courseUsd = 130
+   this.courseJpy = .8
+   this.courseUsd = 100
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'
    this.front = front
