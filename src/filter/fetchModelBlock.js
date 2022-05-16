@@ -1,9 +1,8 @@
 import sortFilterBlock from './filterBlock/sortFilterBlock'
 import createStateFilter from './filterBlock/createStateFilter'
 import {mainState, markaId} from '../initData'
-import { renderLotList } from './renderLotList'
-import { renderLotPlate } from './renderLotPlate'
-import { fetchResultBlockStat } from './fetchResultBlockStat'
+import {renderLotPlate} from './renderLotPlate'
+import {fetchResultBlockStat} from './fetchResultBlockStat'
 
 export function fetchModelBlock() {
    const {brand, engine, model} = mainState.selectBlock
@@ -64,10 +63,7 @@ export function fetchModelBlock() {
          if (front === 'online') {
             const filter = createStateFilter('Ranked')
             const resultSortFilter = sortFilterBlock(filter)   
-            const lotsFilterJsx = mainState.viewResult !== 'list' ?
-               renderLotPlate(resultSortFilter.lots)
-               :
-               renderLotList(resultSortFilter.lots)
+            const lotsFilterJsx = renderLotPlate(resultSortFilter.lots)
 
             mainState.cache.lotsFilter = resultSortFilter.lots
             mainState.cache.lotsFilterJsx = lotsFilterJsx

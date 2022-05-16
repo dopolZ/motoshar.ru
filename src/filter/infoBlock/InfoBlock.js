@@ -1,8 +1,6 @@
 import {mainState} from '../../initData'
 import {useState} from 'react'
 import './style.css'
-import {renderLotList} from '../renderLotList'
-import {renderLotPlate} from '../renderLotPlate'
 import CheckMobile from '../../CheckMobile'
 
 function InfoBlock() {
@@ -153,62 +151,24 @@ function InfoBlock() {
       )
    }
 
-   const onClick = () => {
-      let lots = mainState.cache.lotsFilter
-
-      if (Object.keys(mainState.selectBlock.model).length) {
-         lots = lots.filter(e =>
-            e.model_name in mainState.selectBlock.model
-        )
-      }
-
-      mainState.viewResult === 'list' ?
-         mainState.resultBlock.setState( renderLotList(lots) )
-      :
-         mainState.resultBlock.setState( renderLotPlate(lots) )
-   }
-
    return (
       <div id='infoBlock'>
          {statInfo()}
          <div id='mileageInfo'>
             {mainState.mobile() ? <div></div> : <></>}
             <span>
-               <span style={{color: 'green'}}>km</span>
+               <span style={{color: 'green', fontWeight: 'bold'}}>km</span>
                <span> - пробег в километрах, подтверждён</span>
             </span>
             <span>
-               <span style={{color: 'green'}}>mi</span>
+               <span style={{color: 'green', fontWeight: 'bold'}}>mi</span>
                <span> - пробег в милях, подтверждён</span>
             </span>
             <span>
                <span>
-                  йен - цена в Японии,&nbsp;
-                  руб - "<b>под ключ</b>" Владивосток
+                  цена в рублях - это цена со всеми расходами во Владивостоке!
                </span>
             </span>
-            <div className='choiceViewResult'>
-               {mainState.mobile() ?
-                  <></>
-                  :
-                  <>
-                     <div
-                        className='list'
-                        onClick={() => {
-                           mainState.viewResult = 'list'
-                           onClick()
-                        }}
-                     ></div>
-                     <div
-                        className='plate'
-                        onClick={() => {
-                           mainState.viewResult = 'plate'
-                           onClick()
-                        }}
-                     ></div>
-                  </>
-               }
-            </div>
          </div>
       </div>
    )

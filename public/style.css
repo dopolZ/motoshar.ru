@@ -81,7 +81,7 @@ html, body {
   color: darkslategray;
   font: 1.3vw 'main';
   scrollbar-width: none;
-  background: url('background.png') rgb(255 255 245);
+  background: url('background.png') rgb(255 255 250);
 }
 
 body::-webkit-scrollbar {

@@ -21,8 +21,9 @@
    }
 
    .home:hover {
+      background: var(--mainBgColor);
       box-shadow: 1px 2px white, 2px 4px grey;
-      font-weight: bold;
+      font-size: 120%;
    }
 }
 
@@ -64,9 +65,9 @@
 
 .home {
    composes: button;
-   box-shadow: 1px 1px white, 2px 2px grey;
+   background: rgb(254, 245, 206);
+   box-shadow: 1px 1px white, 2px 3px grey;
    margin: 0 1vw 0 0;
-   transition: font .2s;
    width: 15vw;
 }
 

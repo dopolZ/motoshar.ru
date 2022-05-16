@@ -64,36 +64,6 @@
    width: 100%;
 }
 
-.choiceViewResult {
-   display: inline-block;
-   height: 3vw;
-}
-
-.choiceViewResult div {
-   opacity: .4;
-}
-
-@media (hover: hover) {
-   .choiceViewResult div:hover {
-      opacity: .7;
-      transform: scale(1.1);
-   }
-}
-
-.list {
-   background: url('./img/list.png') no-repeat center /90%;
-   display: inline-block;
-   height: 100%;
-   width: 4vw;
-}
- 
-.plate {
-   background: url('./img/plate.png') no-repeat center /90%;
-   display: inline-block;
-   height: 100%;
-   width: 4vw;
-}
-
 @media (orientation: portrait) {
    #infoBlock {
       margin: 6vw 0 0;
@@ -122,10 +92,6 @@
    #mileageInfo > span:nth-child(4) {
       margin: 2vw auto;
       text-align: center;
-   }
-
-   .choiceViewResult {
-      display: none;
    }
 
    #statInfo {

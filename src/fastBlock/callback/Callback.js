@@ -21,7 +21,7 @@ function Callback() {
 
       const content = !data.name || !data.phone || !data.personal ?
          <>
-            <p>НУЖНО ЗАПОЛНИТЬ ВСЕ ПОЛЯ</p>
+            <p>НУЖНО ЗАПОЛНИТЬ ВСЕ ПОЛЯ,</p>
             <p>ОТМЕТИТЬ СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ</p>
          </> :
          <>

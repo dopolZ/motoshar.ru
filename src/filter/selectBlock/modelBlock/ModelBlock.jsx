@@ -2,7 +2,6 @@ import {useState} from 'react'
 import {mainState} from '../../../initData'
 import './style.css'
 import {useLocation, useNavigate} from 'react-router-dom'
-import {renderLotList} from '../../renderLotList'
 import {renderLotPlate} from '../../renderLotPlate'
 
 function ModelBlock() {
@@ -44,23 +43,15 @@ function ModelBlock() {
                ...mainState.filterBlock.state, disabled: true
             })
 
-            mainState.viewResult === 'plate' ?
-               mainState.resultBlock.setState(
-                  renderLotPlate(lotsJsx) )
-            :
-               mainState.resultBlock.setState(
-                  renderLotList(lotsJsx) )
+            mainState.resultBlock.setState(
+               renderLotPlate(lotsJsx))
          } else {
             mainState.filterBlock.setState({
                ...mainState.filterBlock.state, disabled: false
             })
 
-            mainState.viewResult === 'plate' ?
-               mainState.resultBlock.setState(
-                  renderLotPlate(lotsFilter) )
-            :
-               mainState.resultBlock.setState(
-                  renderLotList(lotsFilter) )
+            mainState.resultBlock.setState(
+               renderLotPlate(lotsFilter) )
          }
       } else {
          modelList = mainState.cache.modelsFetch

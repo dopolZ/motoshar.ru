@@ -37,6 +37,10 @@
    z-index: 2;
 }
 
+.iconActive > img {
+   filter: contrast(2);
+}
+
 .iconFilter {
    composes: icon;
 }
@@ -44,7 +48,7 @@
 @media (hover: hover) and (pointer: fine) {
    .icon:hover {
       opacity: 1;
-      transform: scale(1.7);
+      transform: scale(1.8);
    }
 }
 
@@ -74,7 +78,7 @@
 .iconActive {
    composes: icon;
    opacity: 1;
-   transform: scale(1.7);
+   transform: scale(1.8);
 }
 
 .iconActiveFilter {

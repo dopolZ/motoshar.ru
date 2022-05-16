@@ -1,6 +1,6 @@
 import stl from '../style.module.css'
 import {useLocation, useNavigate} from 'react-router-dom'
-import { mainState } from '../../initData'
+import {mainState} from '../../initData'
 import {useState} from 'react'
 
 function NavFilter () {
@@ -19,8 +19,6 @@ function NavFilter () {
       торги: '/online',
       калькулятор: location.pathname,
    }
-
-   const getStartUrl = () => location.pathname.split('/')[1]
 
    const handleClick = e => {
       const target = e.target.localName === 'img' ?
@@ -83,12 +81,18 @@ function NavFilter () {
          <div>заказать</div> : <div>{str}</div>
 
    for (const prop in navName) {
+      let fast = location.state?.fast === 'заказать' ?
+         'заявка' : location.state?.fast
+      
       navActive.push(
          <div
             className={
-               lotCard ? stl.iconFilter :
-               getStartUrl() === navName[prop] ?
-                  stl.iconActiveFilter : stl.iconFilter
+               fast === prop ? stl.iconActiveFilter :
+               location.pathname.includes('online') &&
+               !fast && prop === 'торги' ? stl.iconActiveFilter :
+               location.pathname.includes('stat') &&
+               !fast && prop === 'статистика' ? stl.iconActiveFilter
+                  : stl.iconFilter
             }
             key={prop}
             onClick={handleClick}

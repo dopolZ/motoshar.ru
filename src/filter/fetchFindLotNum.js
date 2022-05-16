@@ -1,5 +1,4 @@
 import {mainState} from '../initData'
-import {renderLotList} from './renderLotList'
 import {renderLotPlate} from './renderLotPlate'
 
 export const fetchFindLotNum = lotNum => {
@@ -37,10 +36,7 @@ export const fetchFindLotNum = lotNum => {
    .then(res => {
       mainState.cache.lotsFilter = res.lotList
 
-      const lotsFilterJsx = mainState.viewResult !== 'list' ?
-         renderLotPlate(res.lotList)
-         :
-         renderLotList(res.lotList)
+      const lotsFilterJsx = renderLotPlate(res.lotList)
 
       mainState.resultBlock.setState(lotsFilterJsx)
       mainState.preloader.setState()

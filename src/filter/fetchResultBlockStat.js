@@ -1,8 +1,7 @@
 import {mainState, markaId} from '../initData'
 import sortFilterBlock from './filterBlock/sortFilterBlock'
 import createStateFilter from './filterBlock/createStateFilter'
-import { renderLotPlate } from './renderLotPlate'
-import { renderLotList } from './renderLotList'
+import {renderLotPlate} from './renderLotPlate'
 
 export function fetchResultBlockStat() {
    let {brand, engine, model} = mainState.selectBlock
@@ -46,11 +45,7 @@ export function fetchResultBlockStat() {
          mainState.filterBlock.setState(filter)
          mainState.infoBlock.setState({})
          mainState.resultBlock.setState(
-            mainState.viewResult !== 'list' ?
-               renderLotPlate(resultSortFilter.lots)
-               :
-               renderLotList(resultSortFilter.lots)
-         )
+            renderLotPlate(resultSortFilter.lots))
       } else {
          mainState.filterBlock.setState({...filter, disabled: false})   
       }      

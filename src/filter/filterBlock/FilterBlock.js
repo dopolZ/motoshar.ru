@@ -3,8 +3,7 @@ import {useState} from 'react'
 import './style.css'
 import sortFilterBlock from './sortFilterBlock'
 import createStateFilter from './createStateFilter'
-import { renderLotList } from '../renderLotList'
-import { renderLotPlate } from '../renderLotPlate'
+import {renderLotPlate} from '../renderLotPlate'
 
 function FilterBlock() {
    const [state, setState] = useState(
@@ -16,8 +15,7 @@ function FilterBlock() {
       setState(filter)
 
       const res = sortFilterBlock(filter)
-      const lotsJsx = mainState.viewResult === 'list' ?
-         renderLotList(res.lots) : renderLotPlate(res.lots)
+      const lotsJsx = renderLotPlate(res.lots)
 
       mainState.cache.lotsFilter = res.lots
       mainState.cache.lotsFilterJsx = lotsJsx
@@ -158,8 +156,7 @@ function FilterBlock() {
 
                const res = sortFilterBlock(filter)
 
-               const lotsJsx = mainState.viewResult === 'list' ?
-                  renderLotList(res.lots) : renderLotPlate(res.lots)
+               const lotsJsx = renderLotPlate(res.lots)
 
                mainState.cache.lotsFilter = res.lots
                mainState.cache.lotsFilterJsx = lotsJsx
