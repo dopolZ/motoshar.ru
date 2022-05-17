@@ -18,7 +18,7 @@ export function fetchCountLots() {
       .catch(() => {
          mainState.filterHeading.setState(
             <>
-               что-то пошло не так ... обновить бы страницу
+               что-то пошло не так ... попробуйте обновить
             </>
          )
       })

@@ -49,13 +49,8 @@ function ImgWrapper() {
    }
    
    return (
-      <div className={
-            mainState.lotCard?.state ?
-               stl.imgWrapperLot
-            :
-            mainState.viewResult !== 'list' ?
-               stl.imgWrapperPlate : stl.imgWrapperList
-         }
+      <div className={mainState.lotCard?.state ?
+         stl.imgWrapperLot : stl.imgWrapperPlate}
       >
          <div
             className={mainState.lotCard?.state ?

@@ -1,27 +1,8 @@
-.resultList {
-   display: flex;
-   flex-flow: column nowrap;
-   margin: 0 0 0 2.5vw;
-   width: 89%;
-}
-
 .resultPlate {
    display: flex;
    flex-flow: wrap;
    margin: 0 0 0 2.5vw;
    width: 89%;
-}
-
-.resultItem {
-   border-radius: 2px;
-   display: flex;
-   flex-flow: row nowrap;
-   justify-content: space-between;
-   height: 6vw;
-   margin: 6px 0;
-   outline: 1px solid rgb(240, 240, 240);
-   position: relative;
-   width: 100%;
 }
 
 .resultItemPlate {
@@ -52,22 +33,10 @@
 }
 
 @media (hover: hover) {
-   .resultItem:hover {
-      background: rgb(250, 250, 250);
-      outline: 2px solid rgb(230, 230, 230);
-   }
-
    .resultItemPlate:hover {
       background: rgb(250, 250, 250);
       box-shadow: 0 .5vw 2vw darkgrey;
    }
-}
-
-.itemDiv {
-   display: flex;
-   flex-flow: column;
-   justify-content: space-evenly;
-   padding: 0 0 0 2vw;
 }
 
 .itemDivPlate {
@@ -76,28 +45,6 @@
    justify-content: space-between;
    padding: 0 1vw;
    width: 100%;
-}
-
-.itemImg {
-   composes: itemDiv;
-   background:
-      url('../../img/logoLightGrey.svg')
-      no-repeat center/50%;
-   cursor: no-drop;
-   padding: 0;
-   width: 9%;
-}
-
-.itemImg img {
-   cursor: zoom-in;
-   opacity: 0;
-   transition: opacity 1s;
-}
-
-@media (hover: hover) {
-   .itemImg img:hover {
-      transform: scale(1.15);
-   }
 }
 
 .itemImgPlate {
@@ -116,11 +63,6 @@
    cursor: zoom-in;
 }
 
-.itemLot {
-   composes: itemDiv;
-   width: 20%;
-}
-
 .itemLotPlate {
    composes: itemDivPlate;
    border-bottom: 1px dotted;
@@ -136,11 +78,6 @@
 
 .itemLotPlate p:nth-child(2) {
    display: none;
-}
-
-.itemMarka {
-   composes: itemDiv;
-   width: 23%;
 }
 
 .itemMarkaPlate {
@@ -163,18 +100,8 @@
    display: none;
 }
 
-.itemYear {
-   composes: itemDiv;
-   width: 20%;
-}
-
 .itemYearPlate {
    composes: itemDivPlate;
-}
-
-.itemCost {
-   composes: itemDiv;
-   width: 20%;
 }
 
 .itemCostPlate {
@@ -183,14 +110,6 @@
 
 .itemCostPlate p:nth-child(2) {
    font-weight: bold;
-}
-
-.itemRating {
-   composes: itemDiv;
-   align-items: center;
-   justify-content: center;
-   padding: 0;
-   width: 7%;
 }
 
 .itemRatingPlate {
@@ -225,14 +144,6 @@
 
 .itemDivLotPlate p {
    width: 50%;
-}
-
-.plugOnClick {
-   cursor: pointer;
-   height: inherit;
-   position: absolute;
-   right: 0;
-   width: 91%;
 }
 
 .plugOnClickPlate {

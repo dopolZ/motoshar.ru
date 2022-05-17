@@ -21,11 +21,10 @@ function NavFilter () {
    }
 
    const handleClick = e => {
-      const target = e.target.localName === 'img' ?
-         e.target.nextSibling.textContent :
-         e.target.textContent
+      let target = e.target.localName === 'img' ?
+         e.target.nextSibling.textContent : e.target.textContent
 
-      const fastVisible =
+      const fastIsVisible =
          (mainState.fastBlock.state && true) || mainState.mobile('side')
 
       if (lotCard && target.includes('статистика') ) {
@@ -39,22 +38,15 @@ function NavFilter () {
             + mainState.lotCard.state.marka_name + '/'
             + mainState.lotCard.state.eng_v + '/'
             + mainState.lotCard.state.model_name, {
-            replace: fastVisible,
+            replace: fastIsVisible,
             state: {
-               from: location.pathname,
-            }
-         })
-      } else if (target === 'заказать') {
-         navigate(location.pathname, {
-            replace: fastVisible,
-            state: {
-               fast: target,
                from: location.pathname,
             }
          })
       } else {
+         target = target === 'заказать' ? 'заявка' : target
          navigate(navName[target], {
-            replace: fastVisible,
+            replace: fastIsVisible,
             state: {
                fast: target,
                from: location.pathname,

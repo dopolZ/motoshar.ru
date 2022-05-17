@@ -5,7 +5,7 @@ import NavFilter from "../nav/navFilter/NavFilter"
 import {fetchLotCard} from "./fetchLotCard"
 import {mainState} from "../initData"
 import CloseButton from "../closeButton/CloseButton"
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import {useLocation, useNavigate, useParams} from "react-router-dom"
 import {useEffect} from "react"
 
 function LotPage() {
@@ -73,8 +73,7 @@ function LotPage() {
    }
 
    useEffect(() => {
-      mainState.fastBlock.setState(location.state?.fast)
-
+      mainState.fastBlock.setState(mainState.fastBlockOn(location.state?.fast) )
       mainState.header.setMenuMob(location.state?.navMob)
       mainState.nav.setNavMob(location.state?.navMob)
    })

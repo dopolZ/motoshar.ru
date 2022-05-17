@@ -1,5 +1,3 @@
-import Button from '../buttons/Button'
-import NavHome from '../nav/navHome/NavHome'
 import imgStat from './img/stat.webp'
 import imgOnline from './img/online.webp'
 import imgCalc from './img/calc.webp'
@@ -9,6 +7,9 @@ import imgHi from './img/hi.webp'
 import imgRepair from './img/repair.webp'
 import imgStore from './img/store.webp'
 import imgContacts from './img/contacts.webp'
+
+import Button from '../buttons/Button'
+import NavHome from '../nav/navHome/NavHome'
 import Footer from '../footer/Footer'
 import {mainState} from '../initData'
 import stl from './style.module.css'
@@ -21,7 +22,7 @@ function Home() {
    const location = useLocation()
 
    useEffect(() => {
-      mainState.fastBlock.setState(location.state?.fast)
+      mainState.fastBlock.setState(mainState.fastBlockOn(location.state?.fast) )
 
       mainState.header.setMenuMob(location.state?.navMob)
       mainState.nav.setNavMob(location.state?.navMob)

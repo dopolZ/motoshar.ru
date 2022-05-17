@@ -11,7 +11,7 @@ import {fetchModelBlock} from './fetchModelBlock'
 import {fetchResultBlockStat} from './fetchResultBlockStat'
 import {fetchFindLotNum} from './fetchFindLotNum'
 import {useState, useEffect} from 'react'
-import { useLocation } from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 import stl from './filter.module.css'
 
 const Heading = ({front}) => {
@@ -100,7 +100,7 @@ function Filter() {
    useEffect(() => {
       url.includes('online') ? fetchDateAuction() : fetchCountLots()
 
-      mainState.fastBlock.setState(location.state?.fast)
+      mainState.fastBlock.setState(mainState.fastBlockOn(location.state?.fast) )
       mainState.header.setMenuMob(location.state?.navMob)
       mainState.nav.setNavMob(location.state?.navMob)
 

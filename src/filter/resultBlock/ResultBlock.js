@@ -99,8 +99,7 @@ function ResultBlock() {
 
    return (
       <div
-         className={mainState.viewResult !== 'plate' ?
-            stl.resultList : stl.resultPlate}
+         className={stl.resultPlate}
          onClick={handleClick}
          onMouseOver={handleMouseOver}
          onMouseOut={handleMouseOut}

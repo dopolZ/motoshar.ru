@@ -6,13 +6,12 @@ export function costBlock(elem) {
    const freight = Math.ceil(mainState.mainData.taxFreightRub / 1000) * 1000
 
    let {start, finish} = mainState.mainData.calcJpyToRub(elem)
-   // console.log({start}, {finish})
 
    if (elem.auction.split(' ')[1] === 'Kyushu') {
       start += freight
       finish += freight
    }
-   // console.log({start}, {finish})
+
    const splitter = mainState.splitter
 
    const costJpy = str =>

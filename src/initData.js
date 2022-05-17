@@ -57,8 +57,8 @@ export function InitData(obj) {
    
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
-   this.courseJpy = .8
-   this.courseUsd = 100
+   this.courseJpy = .64
+   this.courseUsd = 81
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'
    this.front = front
@@ -170,8 +170,6 @@ export const mainState = {
       yearMin: '',
    },
 
-   viewResult: 'plate',
-
    changeImgUrl: id => {
       const url = 'https://bdsc.jupiter.ac/auctiondata/bds/disp/bds/'
       + id.slice(0, 8) + '/image1_small/' + id.slice(-4)
@@ -258,7 +256,11 @@ export const mainState = {
    mobile: str => str ?
       window.outerHeight > window.outerWidth
       :
-      window.navigator.userAgent.includes('Mobile')
+      window.navigator.userAgent.includes('Mobile'),
+
+   fastBlockOn: str =>
+      'заявка заказать калькулятор img'.includes(str) ? str : ''
+
 }
 
 export const markaId = {
