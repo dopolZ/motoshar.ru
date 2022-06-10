@@ -57,7 +57,7 @@
 .answerWarning {
    composes: answerOk;
    color: rgb(220, 0, 0);
-   font: bold 2vw 'main';
+   font: 2vw 'main';
    height: 10vw;
 }
 

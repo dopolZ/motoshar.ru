@@ -10,72 +10,36 @@ function ResultBlock() {
    const location = useLocation()
    const navigate = useNavigate()
 
-   const handleMouseOver = e => {
-      if (
-         e.target.tagName !== 'IMG' ||
-         e.target.parentElement.className.includes('Plate')
-      ) return
-
-      let url = e.target.src
-         .replace('image1_small', 'image_cube')
-         .replace('.jpg', '_r.jpg')
-      
-      navigate(location.pathname, {
-         replace: true,
-         state: {
-            data: url,
-            fast: 'img',
-            from: location.pathname,
-         }
-      })
-   }
-
-   const handleMouseOut = e => {
-      if (
-         e.target.tagName !== 'IMG' ||
-         e.target.parentElement.className.includes('Plate')
-      ) return
-
-      navigate(location.pathname, {
-         replace: true,
-         state: {
-            from: location.pathname,
-         }
-      })
-   }
-
    const handleClick = e => {
       if ( e.target.className.includes('plugOnClick') ) {
          const id = e.target.parentElement.id
 
-         navigate(`/lot${id}`, {
-            from: location.pathname,
-         })
-      } else if (
-         e.target.tagName === 'IMG' &&
-         e.target.parentElement.className.includes('Plate')
-      ) {
+         mainState.from = location.pathname
+
+         navigate(`/lot${id}`)
+      } else if (e.target.tagName === 'IMG') {
          let url = e.target.src
             .replace('image1_small', 'image_cube')
             .replace('.jpg', '_r.jpg')
+
+         mainState.from = location.pathname
          
-            location.state?.fast ?
-               navigate(location.pathname, {
-                  replace: true,
-                  state: {
-                     data: url,
-                     fast: 'img',
-                     from: location.pathname,
-                  }
-               })
-            :
-               navigate(location.pathname, {
-                  state: {
-                     data: url,
-                     fast: 'img',
-                     from: location.pathname,
-                  }
-               })
+         if (location.state?.fast) {
+            navigate(location.pathname, {
+               replace: true,
+               state: {
+                  data: url,
+                  fast: 'img',
+               }
+            })
+         } else {
+            navigate(location.pathname, {
+               state: {
+                  data: url,
+                  fast: 'img',
+               }
+            })
+         }
       } else return
    }
 
@@ -101,8 +65,6 @@ function ResultBlock() {
       <div
          className={stl.resultPlate}
          onClick={handleClick}
-         onMouseOver={handleMouseOver}
-         onMouseOut={handleMouseOut}
       >
          {state}
          <div

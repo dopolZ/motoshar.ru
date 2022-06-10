@@ -1,6 +1,6 @@
 function CustomsTable(usd) {
    this.year = [
-      { "start": 2018, "end": 2021 },
+      { "start": 2018, "end": 2022 },
       { "start": 2016, "end": 2017 },
       { "start": 2014, "end": 2015 },
       { "start": 2011, "end": 2013 },

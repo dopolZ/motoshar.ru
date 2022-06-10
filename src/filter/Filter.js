@@ -64,14 +64,16 @@ function Filter() {
       }
 
    if (
-      location.pathname === location.from
+      location.pathname === mainState.from
    ) {
+      console.log(1)
       mainState.needFetchModelBlock = false            
    } else if (
       pathname[2]?.includes('find') &&
       mainState.cache.lotsFilter[0]?.lot_num !==
       mainState.lastFindLotNum
    ) {
+      console.log(2)
       fetchFindLotNum(pathname[2].slice(4))
 
       mainState.selectBlock = newSelect
@@ -80,6 +82,7 @@ function Filter() {
       newSelect.brand !== mainState.selectBlock.brand ||
       newSelect.engine !== mainState.selectBlock.engine
    ) {
+      console.log(3)
       mainState.selectBlock = newSelect
       
       mainState.needFetchModelBlock = true
@@ -87,13 +90,14 @@ function Filter() {
       fetchModelBlock()
    } else if (
       url === 'stat' && pathname[4]
-      && (location.pathname !== (location.state?.from ?
-         location.state.from : mainState.from))      
+      && (location.pathname !== mainState.from) 
    ) {
+      console.log(4)
       mainState.needFetchModelBlock = false
 
       fetchResultBlockStat()
    } else {
+      console.log(5)
       mainState.needFetchModelBlock = false
    }
 
@@ -104,9 +108,9 @@ function Filter() {
       mainState.header.setMenuMob(location.state?.navMob)
       mainState.nav.setNavMob(location.state?.navMob)
 
-      if (
-         location.pathname === location.state?.from
-      ) {
+      if (location.pathname === mainState.from) {
+         console.log(11)
+         console.log(location)
          mainState.needFetchModelBlock = false
       } else if (mainState.needFetchModelBlock) {
          mainState.modelBlock.setState()
@@ -117,6 +121,10 @@ function Filter() {
          url === 'stat' && pathname[4]
          && location.pathname !== mainState.from
       ) {
+         console.log(12)
+         console.log(location.pathname)
+         console.log(location)
+         console.log(location.pathname === location.state?.from)
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)
          mainState.resultBlock.setState()
@@ -125,6 +133,7 @@ function Filter() {
          mainState.cache.lotsFilter[0]?.lot_num !==
          mainState.lastFindLotNum
       ) {
+         console.log(13)
          mainState.modelBlock.setState()
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)

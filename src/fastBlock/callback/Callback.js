@@ -83,7 +83,7 @@ function Callback() {
          setState('offSend')
 
          setTimeout( () => mainState.callbackAnswer.setState({}) )
-         setTimeout(() => navigate(location.pathname), 3000)
+         setTimeout(() => navigate(-1), 3000)
       }
    }
 

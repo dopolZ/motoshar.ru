@@ -27,6 +27,8 @@ function NavFilter () {
       const fastIsVisible =
          (mainState.fastBlock.state && true) || mainState.mobile('side')
 
+      mainState.from = location.pathname
+
       if (lotCard && target.includes('статистика') ) {
          mainState.modelBlock = {}
          mainState.filterBlock = {}
@@ -38,18 +40,15 @@ function NavFilter () {
             + mainState.lotCard.state.marka_name + '/'
             + mainState.lotCard.state.eng_v + '/'
             + mainState.lotCard.state.model_name, {
-            replace: fastIsVisible,
-            state: {
-               from: location.pathname,
-            }
+            replace: fastIsVisible
          })
       } else {
          target = target === 'заказать' ? 'заявка' : target
+
          navigate(navName[target], {
             replace: fastIsVisible,
             state: {
                fast: target,
-               from: location.pathname,
             }
          })
       }
