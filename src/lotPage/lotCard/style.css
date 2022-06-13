@@ -169,7 +169,7 @@
    opacity: 0;
    outline: 5px solid white;
    outline-offset: -4px;
-   transition: opacity .7s linear;
+   transition: opacity .5s;
 }
 
 .lcdMainImgs div[data-video1],
@@ -312,7 +312,7 @@
    #lotCard .itemDivMarka {
       align-items: center;
       background: rgb(250, 250, 250);
-      border-radius: 10px;
+      border-top: 2px solid darkgray;
       margin: auto;
       order: 2;
       padding: 5vw 0 2vw;
@@ -320,7 +320,7 @@
    }
 
    #lotCard .itemDivMarka > p:nth-child(1) {
-      font-weight: bold;
+      font: bold 6vw 'main';
    }
    
    #lotCard .itemDivMarka > p:nth-child(2) {
@@ -351,29 +351,29 @@
    }
    
    #lotCard .itemDivCost {
+      align-items: baseline;
       background: rgb(250, 250, 250);
       border-bottom: none;
-      border-radius: 10px 10px 0 0;
       flex-flow: row wrap;
       justify-content: space-around;
       margin: 0 auto;
       order: 5;
       padding: 5vw 0;
       text-align: center;
-      width: 96%;
+      width: 100%;
    }
 
    #lotCard .itemDivCost p:nth-child(1) {
-      width: 32%;
+      width: 30%;
    }
 
    #lotCard .itemDivCost p:nth-child(2) {
-      font-weight: bold;
-      width: 36%;
+      font: bold 6vw 'main';
+      width: 40%;
    }
 
    #lotCard .itemDivCost p:nth-child(3) {
-      width: 32%;
+      width: 30%;
    }
 
    .lcdInfoRateEmpty {
@@ -382,7 +382,7 @@
 
    #lotCard .itemDivRating {
       border: unset;
-      margin: 2vw 0 0;
+      margin: 3vw 0 0;
       order: 4;
       position: absolute;
       width: 98vw;
@@ -393,23 +393,23 @@
    }
 
    #lotCard .itemDivRating p:nth-child(1) {
-      margin: 0 0 1vw;
-   }
-
-   #lotCard .itemDivRating p:nth-child(2) {
       display: none;
+   }
+   
+   #lotCard .itemDivRating p:nth-child(2) {
+      margin: 0 0 1vw;
    }
 
    #lotCard .itemDivRating p:nth-child(3) {
       background: rgb(250 250 250);
-      border: 1px solid lightgrey;
-      border-radius: 5px;
-      box-shadow: 5px 0 0 5px white, -5px 0 0 5px white;
+      border: 2px solid darkgrey;
+      border-radius: 3vw;
+      box-shadow: 0 0 1px 3px white;
       font: bold 7vw 'main';
-      height: 9vw;
-      line-height: 8.5vw;
+      height: 10vw;
+      line-height: 8.8vw;
       text-align: center;
-      width: 12vw;
+      width: 13vw;
    }
 
    #lotCard .itemDivRating p[data-norate] {
@@ -422,10 +422,8 @@
 
    #lotCard #descriptionCost {
       background: rgb(250, 250, 250);
-      border-bottom: 1px solid lightgrey;
-      border-radius: 0 0 10px 10px;
-      margin: 0 auto 5vw;
-      padding: 0 0 5vw;
+      margin: 0 auto;
+      padding: 0 0 10vw;
       width: 96%;
    }
 
@@ -435,14 +433,12 @@
 
    #lotCard #lotCardDetails {
       border: unset;
-      margin: 5vw 0 0;
       padding: unset;
    }
 
    #lotCard #lcdRating {
-      border-top: 1px solid lightgrey;
-      border-radius: 10px 10px 0 0;
-      padding: 2vw 0 1vw;
+      border-top: 2px solid darkgrey;
+      padding: 3vw 0 0;
       width: 96%;
    }
 

@@ -1,11 +1,10 @@
 import {mainState} from '../../initData'
 import stl from './style.module.css'
 import {useState} from 'react'
-import {useLocation, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import CloseButton from '../../closeButton/CloseButton'
 
 function Callback() {
-   const location = useLocation()
    const navigate = useNavigate()
    const [state, setState] = useState()
    const [data, setData] = useState({
@@ -13,6 +12,7 @@ function Callback() {
       phone: '',
       personal: false,
    })
+   
    mainState.callback = {state, setState, data, setData}
 
    function Answer() {
@@ -65,8 +65,6 @@ function Callback() {
    const handleClickClose = () => {
       setState('off')
       
-      mainState.from = location.pathname
-
       setTimeout(() => navigate(-1), 600)
    }
 

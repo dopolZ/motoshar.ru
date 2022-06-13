@@ -64,7 +64,7 @@ function NavFilter () {
          (
             <div className={stl.statName}>
                статистика <br />
-               {mainState.lotCard.state.model_name}
+               {mainState.lotCard.state?.model_name}
             </div>
          )
       :

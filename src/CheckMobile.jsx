@@ -1,9 +1,7 @@
 import {useState, useEffect} from 'react'
 import {mainState} from './initData'
-import {useNavigate} from 'react-router-dom'
 
 function CheckMobile(props) {
-   const navigate = useNavigate()
    const [state, setState] = useState( mainState.mobile('side') )
    mainState.checkMobile = {state, setState}
 
@@ -13,11 +11,9 @@ function CheckMobile(props) {
       } else {
          setState(false)
       }
-
-      navigate.location.mobMenu = false
       
-      mainState.header.setMenuMobSpan(false)
-      mainState.nav.setMobOn(false)
+      mainState.header.setMenuMob(false)
+      mainState.nav.setNavMob(false)
    }
 
    useEffect(() => {
@@ -461,7 +457,7 @@ function CheckMobile(props) {
 
             descriptionCost: state ?
                <>
-                  <span>Цена <b>руб</b> - с учётом <b>всех</b> расходов, документов и услуг</span>
+                  <span>Цена в <b>РУБ</b> - с учётом <b>всех</b> расходов, документов и услуг</span>
                   <br /><span>"под ключ" во Владивостоке</span>
                   <p>Цена <b>йен</b> - чистая цена в Японии</p>
                </>

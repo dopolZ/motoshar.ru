@@ -12,14 +12,14 @@ function ImgWrapper() {
    mainState.imgWrapper = {state, setState}
 
    const handleClick = () => (
-      mainState.from = location.pathname,
+      // mainState.from = location.pathname,
 
       navigate(-1)
    )
 
    const handleMouseOut = () => {
       if (!location.pathname.includes('lot')) {
-         mainState.from = location.pathname
+         // mainState.from = location.pathname
          
          navigate(-1)
       }

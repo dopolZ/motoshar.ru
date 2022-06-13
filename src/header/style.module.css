@@ -108,17 +108,18 @@
    display: none;
 }
 
+.phone p:before {
+   content: 'phone';
+   font: 1.4vw 'main';
+   margin: 0 1vw .5vw 0;
+}
+
 .phone p:after {
    content: 'whatsapp';
    font: 1.4vw 'main';
    margin: 0 0 .5vw 1vw;
 }
 
-.phone p:before {
-   content: 'phone';
-   font: 1.4vw 'main';
-   margin: 0 1vw .5vw 0;
-}
 
 @media (orientation: portrait) {
    .header {

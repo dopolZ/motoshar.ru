@@ -31,6 +31,12 @@
    }
 
    .h1h2 h1 {
+      background:
+         linear-gradient(45deg,
+            transparent 38%, rgb(246, 188, 0, .8) 70%, transparent 95%),
+         linear-gradient(90deg,
+            transparent 70%, rgb(246, 188, 0, .8) 80%,
+            rgb(246, 188, 0, .8) 100%);
       font: bold 6vw 'main';
    }
    

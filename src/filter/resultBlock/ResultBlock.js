@@ -1,6 +1,6 @@
 import {mainState} from '../../initData'
 import {useState, useEffect} from 'react'
-import {useLocation, useNavigate, useOutlet} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import stl from './style.module.css'
 
 function ResultBlock() {
@@ -14,15 +14,11 @@ function ResultBlock() {
       if ( e.target.className.includes('plugOnClick') ) {
          const id = e.target.parentElement.id
 
-         mainState.from = location.pathname
-
          navigate(`/lot${id}`)
       } else if (e.target.tagName === 'IMG') {
          let url = e.target.src
             .replace('image1_small', 'image_cube')
             .replace('.jpg', '_r.jpg')
-
-         mainState.from = location.pathname
          
          if (location.state?.fast) {
             navigate(location.pathname, {

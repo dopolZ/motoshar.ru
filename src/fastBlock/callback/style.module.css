@@ -23,7 +23,7 @@
       opacity: 1;
    }
 
-   66% {
+   80% {
       opacity: 1;
    }
   
@@ -82,7 +82,7 @@
 
 .mainBgCloseSend {
    composes: mainBg;
-   animation: mainBgCloseSend 3s;
+   animation: mainBgCloseSend 2s;
    opacity: 0;
 }
 

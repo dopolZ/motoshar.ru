@@ -63,42 +63,30 @@ function Filter() {
          model: parseModels(),
       }
 
+   let needFetchModelBlock = false
+
    if (
-      location.pathname === mainState.from
-   ) {
-      console.log(1)
-      mainState.needFetchModelBlock = false            
-   } else if (
       pathname[2]?.includes('find') &&
       mainState.cache.lotsFilter[0]?.lot_num !==
       mainState.lastFindLotNum
    ) {
-      console.log(2)
       fetchFindLotNum(pathname[2].slice(4))
 
       mainState.selectBlock = newSelect
-      mainState.needFetchModelBlock = false
    } else if (
       newSelect.brand !== mainState.selectBlock.brand ||
       newSelect.engine !== mainState.selectBlock.engine
    ) {
-      console.log(3)
       mainState.selectBlock = newSelect
+      needFetchModelBlock = true
       
-      mainState.needFetchModelBlock = true
-
       fetchModelBlock()
    } else if (
-      url === 'stat' && pathname[4]
-      && (location.pathname !== mainState.from) 
+      (url === 'stat' && !mainState.cache.lotsFetch && pathname[4]) ||
+      (Object.keys(mainState.selectBlock.model)[0] !==
+      mainState.cache.lotsFetch[0]?.model_name)
    ) {
-      console.log(4)
-      mainState.needFetchModelBlock = false
-
       fetchResultBlockStat()
-   } else {
-      console.log(5)
-      mainState.needFetchModelBlock = false
    }
 
    useEffect(() => {
@@ -108,32 +96,26 @@ function Filter() {
       mainState.header.setMenuMob(location.state?.navMob)
       mainState.nav.setNavMob(location.state?.navMob)
 
-      if (location.pathname === mainState.from) {
-         console.log(11)
-         console.log(location)
-         mainState.needFetchModelBlock = false
-      } else if (mainState.needFetchModelBlock) {
+      if (needFetchModelBlock) {
          mainState.modelBlock.setState()
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)
          mainState.resultBlock.setState()
-      } else if (
-         url === 'stat' && pathname[4]
-         && location.pathname !== mainState.from
-      ) {
-         console.log(12)
-         console.log(location.pathname)
-         console.log(location)
-         console.log(location.pathname === location.state?.from)
-         mainState.filterBlock.setState(mainState.filter)
-         mainState.infoBlock.setState(0)
-         mainState.resultBlock.setState()
+      } else if (url === 'stat') {
+         if (
+            mainState.cache.lotsFetch &&
+            Object.keys(mainState.selectBlock.model)[0] !==
+            mainState.cache.lotsFetch[0].model_name
+         ) {
+            mainState.filterBlock.setState(mainState.filter)
+            mainState.infoBlock.setState(0)
+            mainState.resultBlock.setState()
+         }
       } else if (
          pathname[2]?.includes('find') &&
          mainState.cache.lotsFilter[0]?.lot_num !==
          mainState.lastFindLotNum
       ) {
-         console.log(13)
          mainState.modelBlock.setState()
          mainState.filterBlock.setState(mainState.filter)
          mainState.infoBlock.setState(0)
