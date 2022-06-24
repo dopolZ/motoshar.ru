@@ -39,7 +39,7 @@ function Filter() {
       if (!pathname[4]) return {}
       
       const res = {}
-      pathname[4].split('<>').forEach(e => res[e] = '')
+      pathname[4].split('<>').forEach(e => res[e.replace('%20', ' ')] = '')
       
       return res
    }
@@ -111,7 +111,6 @@ function Filter() {
             Object.keys(mainState.selectBlock.model)[0] !==
             mainState.cache.lotsFetch[0].model_name
          ) {
-            console.log(111)
             mainState.filterBlock.setState(mainState.filter)
             mainState.infoBlock.setState(0)
             mainState.resultBlock.setState()

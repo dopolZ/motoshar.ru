@@ -10,6 +10,8 @@ function ModelBlock() {
    )
    mainState.modelBlock = {state, setState}
 
+   console.log(state)
+
    const location = useLocation()
    const startUrl = '/' + location.pathname.split('/')[1]
    const navigate = useNavigate()
@@ -106,10 +108,6 @@ function ModelBlock() {
             mainState.selectBlock.engine
 
       navigate(newPathname)
-      // navigate(newPathname, {
-      //    from: startUrl + '/' + mainState.selectBlock.brand + '/' +
-      //       mainState.selectBlock.engine,
-      // })
    }
 
    return (
