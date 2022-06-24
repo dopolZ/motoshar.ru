@@ -105,10 +105,11 @@ function ModelBlock() {
             startUrl + '/' + mainState.selectBlock.brand + '/' +
             mainState.selectBlock.engine
 
-      navigate(newPathname, {
-         from: startUrl + '/' + mainState.selectBlock.brand + '/' +
-            mainState.selectBlock.engine,
-      })
+      navigate(newPathname)
+      // navigate(newPathname, {
+      //    from: startUrl + '/' + mainState.selectBlock.brand + '/' +
+      //       mainState.selectBlock.engine,
+      // })
    }
 
    return (

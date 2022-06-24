@@ -63,9 +63,13 @@ function Filter() {
          model: parseModels(),
       }
 
-   let needFetchModelBlock = false
+   let needFetchModelBlock
 
-   if (
+   if (url === 'online' &&
+      newSelect.brand === mainState.selectBlock.brand &&
+      newSelect.engine === mainState.selectBlock.engine) {
+      needFetchModelBlock = false
+   } else if (
       pathname[2]?.includes('find') &&
       mainState.cache.lotsFilter[0]?.lot_num !==
       mainState.lastFindLotNum
@@ -107,6 +111,7 @@ function Filter() {
             Object.keys(mainState.selectBlock.model)[0] !==
             mainState.cache.lotsFetch[0].model_name
          ) {
+            console.log(111)
             mainState.filterBlock.setState(mainState.filter)
             mainState.infoBlock.setState(0)
             mainState.resultBlock.setState()
