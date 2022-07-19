@@ -58,7 +58,7 @@ export function InitData(obj) {
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
    this.courseJpy = .55
-   this.courseUsd = 7
+   this.courseUsd = 70
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'
    this.front = front
@@ -67,12 +67,12 @@ export function InitData(obj) {
    this.round = num => Math.ceil(num / 1000) * 1000
    
    this.taxBigPowerRub = 511
-   this.taxBrokerRub = 7000
+   this.taxBrokerRub = 10000
    this.taxDealerJpy = 50000
-   this.taxFreightUsd = 400
+   this.taxFreightUsd = 650
    this.taxSbktsRub = 15000
    this.taxServiceRub = 30000
-   this.taxSvhRub = 7000
+   this.taxSvhRub = 15000
    this.taxSwiftJpy = 10000
 
    this.taxDealerRub = Math.floor(this.taxDealerJpy * this.courseJpy)
