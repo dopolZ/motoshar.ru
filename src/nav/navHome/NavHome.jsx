@@ -32,8 +32,8 @@ function NavHome() {
    const navActive = []
    
    const navDescription = [
-      'статистика',
       'торги',
+      'статистика',
       'калькулятор',
       'оплата',
       'транспортная',

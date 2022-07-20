@@ -15,8 +15,8 @@ function NavFilter () {
 
    const navName = {
       заявка: location.pathname,
-      статистика: '/stat',
       торги: '/online',
+      статистика: '/stat',
       калькулятор: location.pathname,
    }
 

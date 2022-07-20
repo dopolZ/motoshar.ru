@@ -65,42 +65,16 @@ function Home() {
       <>
          <NavHome />
          <h1 className={stl.h1}>
-            Покупаем проверенные мотоциклы аукционов японии
+            Привозим проверенные мотоциклы аукционов японии
          </h1>
          <h2 className={stl.h2}>
-            работаем от подбора до вручения, по всей России
+            работаем от подбора до вручения по всей России
          </h2>
          <section className={stl.section1}>
-            <img className={stl.img} src={imgStat} alt='img'></img>
-            <div className={stl.description}>
-               <h2>Начинайте подбор в статистике торгов</h2>
-               <CheckMobile home={{caption: 'section1'}} />
-               <div className={stl.buttons}>
-                  <Link
-                     className={stl.link}
-                     to={{
-                        pathname: 'stat',
-                        from: location.pathname,
-                     }}
-                  >
-                     <Button
-                        name='статистика'
-                        class='home'
-                     />
-                  </Link>
-                  <Button
-                     class='home'
-                     name='заявка'
-                     onclick={handleClick}
-                  />
-               </div>
-            </div>
-         </section>
-         <section className={stl.section}>
             <img className={stl.img} src={imgOnline} alt='img'></img>
             <div className={stl.description}>
                <h2>Выбирайте мотоциклы на ближайших торгах</h2>
-               <CheckMobile home={{caption: 'section2'}} />
+               <CheckMobile home={{caption: 'section1'}} />
                <div className={stl.buttons}>
                   <Link
                      className={stl.link}
@@ -111,6 +85,32 @@ function Home() {
                   >
                      <Button
                         name='торги'
+                        class='home'
+                     />
+                  </Link>
+                  <Button
+                     class='home'
+                     name='заявка'
+                     onclick={handleClick}
+                  />
+               </div>
+            </div>            
+         </section>
+         <section className={stl.section}>
+            <img className={stl.img} src={imgStat} alt='img'></img>
+            <div className={stl.description}>
+               <h2>Смотрите цены в статистике торгов</h2>
+               <CheckMobile home={{caption: 'section2'}} />
+               <div className={stl.buttons}>
+                  <Link
+                     className={stl.link}
+                     to={{
+                        pathname: 'stat',
+                        from: location.pathname,
+                     }}
+                  >
+                     <Button
+                        name='статистика'
                         class='home'
                      />
                   </Link>
