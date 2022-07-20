@@ -10,8 +10,6 @@ function ModelBlock() {
    )
    mainState.modelBlock = {state, setState}
 
-   console.log(state)
-
    const location = useLocation()
    const startUrl = '/' + location.pathname.split('/')[1]
    const navigate = useNavigate()

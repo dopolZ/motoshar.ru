@@ -10,6 +10,8 @@ function NavHome() {
    mainState.nav = {state, navMob, setState, setNavMob}
 
    const handleClick = e => {
+      navigate('/', {replace: true})
+      
       const headerPadding = document.documentElement.offsetWidth / 100
          * (mainState.mobile('side') ? 20 : 6)
 
@@ -25,7 +27,6 @@ function NavHome() {
 
       window.scrollTo({top: coord, behavior: 'smooth'})
 
-      navigate('/', {replace: true})
    }
 
    const navActive = []
