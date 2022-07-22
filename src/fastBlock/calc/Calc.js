@@ -7,16 +7,18 @@ import createState from './createState'
 import CheckMobile from '../../CheckMobile'
 import './style.css'
 import {useNavigate} from 'react-router-dom'
+import useCurrency from '../../currency/useCurrency'
 
 function Calc() {
    const navigate = useNavigate()
+   
    const [state, setState] = useState( createState() )
    mainState.calc = {state, setState}
 
+   const {jpy: courseJpy, usd: courseUsd} = useCurrency().currency
+
    const handleClickClose = () => {
       mainState.calcPlug.setState('off')
-
-      // mainState.from = location.pathname
       
       setTimeout(() => navigate(-1), 600)
    }
@@ -149,10 +151,10 @@ function Calc() {
             </div>
             <div id='coursesBlockCalc'>
                <span id='courseJpyCalc'>
-                  jpy {mainState.mainData.courseJpy} руб
+                  jpy {courseJpy} руб
                </span>
                <span id='courseUsdCalc'>
-                  usd {mainState.mainData.courseUsd} руб
+                  usd {courseUsd} руб
                </span>
             </div>
          </div>

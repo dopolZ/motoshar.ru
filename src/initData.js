@@ -52,12 +52,12 @@ function CustomsTable(usd) {
    this.value = calculateCustoms()
 }
 
-export function InitData(obj) {
+function InitData(obj) {
    const {front} = obj
    
    this.address = 'Екатеринбург, Крауля 44'
    this.cellphone = '+7 922 290 20 30'
-   this.courseJpy = .55
+   this.courseJpy = .6
    this.courseUsd = 70
    this.customs = new CustomsTable(this.courseUsd)
    this.email = 'info@motoshar.ru'

@@ -17,9 +17,17 @@ import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
 import CheckMobile from '../CheckMobile'
 
+import useCurrency from '../currency/useCurrency'
+import fetchCourse from '../currency/fetchCourse'
+
 function Home() {
    const navigate = useNavigate()
    const location = useLocation()
+
+   const {setCurrency} = useCurrency()
+   const handleCurrency = () => fetchCourse(setCurrency)
+
+   console.log(useCurrency())
 
    useEffect(() => {
       mainState.fastBlock.setState(mainState.fastBlockOn(location.state?.fast) )
@@ -65,9 +73,11 @@ function Home() {
       <>
          <NavHome />
          <h1 className={stl.h1}>
-            Привозим проверенные мотоциклы аукционов японии
+            Привозим проверенные мотоциклы&thinsp;
+            <Link to='admin'>а</Link>
+            укционов японии
          </h1>
-         <h2 className={stl.h2}>
+         <h2 className={stl.h2} onClick={handleCurrency}>
             работаем от подбора до вручения по всей России
          </h2>
          <section className={stl.section1}>
